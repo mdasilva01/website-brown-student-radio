@@ -7,7 +7,6 @@ import AboutPage from './pages/About';
 import SchedulePage from './pages/Schedule';
 import ContactPage from './pages/Contact';
 import DJProfilesPage from './pages/DJProfiles';
-import ForumPage from './pages/Forum';
 
 const App: React.FC = () => {
   return (
@@ -21,7 +20,6 @@ const App: React.FC = () => {
             <Route path="/schedule" element={<SchedulePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/DJProfiles" element={<DJProfilesPage />} />
-            <Route path="/forum" element={<ForumPage />} />
           </Routes>
         </div>
         <Footer /> {}
