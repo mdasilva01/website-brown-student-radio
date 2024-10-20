@@ -1,0 +1,19 @@
+.shows-box {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: auto;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    cursor: pointer;
+    width: 600px;
+    user-select: none;
+}
+.shows-table {
+    width: 100%;
+}
+.shows-table td {
+    padding: 10px !important;
+}
+.shows-table :not(:last-child) td {
+    border-bottom: 1px solid gray;
+}
