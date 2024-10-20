@@ -1,0 +1,9 @@
+#home {
+    text-align: center;
+}
+#home * {
+    padding: 0;
+}
+.accent {
+    color: rgb(73, 125, 118);
+}
