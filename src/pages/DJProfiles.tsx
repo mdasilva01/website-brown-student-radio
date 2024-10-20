@@ -1,5 +1,6 @@
 import React from 'react';
 import './DJProfiles.css';
+import TagsInput from 'react-tagsinput';
 
 const About: React.FC = () => {
 
@@ -86,49 +87,36 @@ const About: React.FC = () => {
 
   return (
     <div className='tags-container'>
-      <h1 className='tag-filter'>Tags filtered</h1>
-      <div>
-        {tags.length > 0
-          ? tags.map((tag) => {
-              return (
-                <button
-                  key={`close-button-${id}`}
-                  className='close'
-                  onClick={deleteTag(tag)}
-                >
-                  {tag} &nbsp; x
-                </button>
-              );
-            })
-          : 'No tags selected'}
-      </div>
-      <div className= "DJ-container">
-      {projects
-        .filter((proj) => matchTags(proj.tags, tags))
-        .map(({ title, description, tags }) => {
-          return (
-            <div key={`card-${id}`} className='card'>
-              <div>
-                <p>{title}</p>
-                <p>{description}</p>
+      <h1 className='tag-filter'>Tags Filtered</h1>
+      <TagsInput value={tags} onChange={setTags} />
+      <div className="DJ-container">
+        {projects
+          .filter((proj) => matchTags(proj.tags, tags))
+          .map(({ title, description, tags }) => {
+            return (
+              <div key={`card-${id}`} className='card'>
+                <div>
+                  <p>{title}</p>
+                  <p>{description}</p>
+                </div>
+                {tags.map((tag) => {
+                  return (
+                    <button
+                      key={`add-button-${id}`}
+                      type='button'
+                      onClick={addTag(tag)}
+                    >
+                      #{tag}
+                    </button>
+                  );
+                })}
               </div>
-              {tags.map((tag) => {
-                return (
-                  <button
-                    key={`add-button-${id}`}
-                    type='button'
-                    onClick={addTag(tag)}
-                  >
-                    #{tag}
-                  </button>
-                );
-              })}
-            </div>
-          );
-        })}
-        </div>
+            );
+          })}
+      </div>
     </div>
   );
 };
+
 
 export default About;
