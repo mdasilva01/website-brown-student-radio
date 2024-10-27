@@ -30,7 +30,7 @@ export default function Shows() {
     if (shows) {
         return (
             <>
-                <h3>Shows coming up</h3>
+                <h2>Shows coming up</h2>
                 <div className="shows-box" ref={showsBox} onClick={() => setShowsBoxOpen(!showsBoxOpen)}>
                     <table className="shows-table">
                         {shows.map(show => (

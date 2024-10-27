@@ -8,12 +8,15 @@
     width: 600px;
     user-select: none;
 }
+
 .shows-table {
     width: 100%;
 }
+
 .shows-table td {
     padding: 10px !important;
 }
+
 .shows-table :not(:last-child) td {
     border-bottom: 1px solid gray;
 }
