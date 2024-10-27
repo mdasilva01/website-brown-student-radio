@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./BlogPost.css";
+import { queryObjects } from "../cosmic";
 
 export default function BlogPost() {
     const {postID} = useParams();
@@ -9,9 +10,7 @@ export default function BlogPost() {
 
     useEffect(() => {
         (async () => {
-            const query = {type: "posts", id: postID}
-            const response = await fetch(`https://api.cosmicjs.com/v3/buckets/bsr-production/objects/?read_key=DsCCqr1xYA6ByGkhlBdK7ws9fLwvNMVCHRi1yF6ENUFJwsf8jY&query=${encodeURIComponent(JSON.stringify(query))}&limit=100`);
-            setPost((await response.json()).objects[0]);
+            setPost((await queryObjects({type: "posts", id: postID}))[0]);
         })();
     }, []);
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./BlogPreview.css";
 import { useNavigate } from "react-router-dom";
+import { queryObjects } from "../cosmic";
 
 export default function BlogPreview() {
     const navigate = useNavigate();
@@ -9,8 +10,7 @@ export default function BlogPreview() {
 
     useEffect(() => {
         (async () => {
-            const response = await fetch(`https://api.cosmicjs.com/v3/buckets/bsr-production/objects/?read_key=DsCCqr1xYA6ByGkhlBdK7ws9fLwvNMVCHRi1yF6ENUFJwsf8jY&query=${encodeURIComponent(`{"type": "posts"}`)}&limit=100`);
-            setPosts((await response.json()).objects);
+            setPosts(await queryObjects({type: "posts"}));
         })();
     }, []);
 
