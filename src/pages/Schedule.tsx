@@ -68,8 +68,8 @@ const Home: React.FC = () => {
                     <div className="mdl-card__supporting-text">
                       <h4>On-air</h4>
                       {/* spinitron widget for showing the currently playing track */}
-                      <div className="spinitron-js-widget" data-action="now-playing-v2" data-station="WBRU" data-layout="1"></div>
-                      <script src="https://widgets.spinitron.com/static/js/widget.js"></script>
+                      <div data-station="wbru" data-count="1" data-action="upcoming-shows" 
+    data-image="1" data-description="1" className="spinitron-js-widget"></div>
                     </div>
                     <div className="mdl-card__actions">
                       {/* link to see more information about the on-air show */}
