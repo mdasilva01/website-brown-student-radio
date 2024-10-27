@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Player from '../components/Player';
 
 // Main functional component for the Home page
 const Home: React.FC = () => {
@@ -66,11 +67,17 @@ const Home: React.FC = () => {
                 <section className="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                   <div className="mdl-card mdl-cell mdl-cell--12-col">
                     <div className="mdl-card__supporting-text">
-                      <h4>On-air</h4>
+                      <h4> <b> On-air/Coming up (Click on the Disc Below to Listen!)</b></h4>
                       {/* spinitron widget for showing the currently playing track */}
-                      <div data-station="wbru" data-count="1" data-action="upcoming-shows" 
-    data-image="1" data-description="1" className="spinitron-js-widget"></div>
-                    </div>
+                      <div className="on-air-container">
+                        <Player />
+                        <div className="program-info">
+                          
+                          <div data-station="wbru" data-count="1" data-action="upcoming-shows" 
+                              data-image="1" data-description="1" className="spinitron-js-widget"></div>
+                        </div>
+                      </div>
+  </div>
                     <div className="mdl-card__actions">
                       {/* link to see more information about the on-air show */}
                       <a href="https://programs.testradio.org/WBRU/?layout=1" className="mdl-button">See more</a>
