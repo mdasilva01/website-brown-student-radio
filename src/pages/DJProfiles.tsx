@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './DJProfiles.css';
+//import TagsInput from '../components/TagsInput';
 import TagsInput from 'react-tagsinput';
-
+import 'react-tagsinput/react-tagsinput.css'
 type Project = {
   title: string;
   description: string;
@@ -14,6 +15,22 @@ const About: React.FC = () => {
   const [tags, setTags] = React.useState(["DJ"]);
   const [projects, setProjects] = useState<Project[]>([]);
   const id = React.useId();
+
+  async function queryObjects(query: any) {
+    const response = await fetch(`https://api.cosmicjs.com/v3/buckets/my-project-production-8d04eb10-94a1-11ef-bd4d-8d05011bda81/objects?pretty=true&query=%7B%22type%22:%22authors%22%7D&limit=10&read_key=FKGvgkSabJOy897MA5ZsYJosVRbb67gqVDf8iYauhw8waywfhP&depth=1&props=slug,title,metadata`);
+    return (await response.json()).objects;
+}
+
+  const allTags = [
+    'DJ',
+    'Blues',
+    'Jazz',
+    'Country',
+    'Carnatic',
+    'Classical',
+    'Hip Hop',
+    'Rap'
+  ]
 
   useEffect(() => {
     fetch('https://api.cosmicjs.com/v3/buckets/my-project-production-8d04eb10-94a1-11ef-bd4d-8d05011bda81/objects?pretty=true&query=%7B%22type%22:%22authors%22%7D&limit=10&read_key=FKGvgkSabJOy897MA5ZsYJosVRbb67gqVDf8iYauhw8waywfhP&depth=1&props=slug,title,metadata')
@@ -55,7 +72,8 @@ const About: React.FC = () => {
 
   return (
     <div className='tags-container'>
-      <h1 className='tag-filter'>Tags Filtered</h1>
+      <h2></h2>
+      <h1 className='tag-filter'>Tags filtered</h1>
       <TagsInput value={tags} onChange={setTags} />
       <div className="DJ-container">
         {projects
@@ -82,5 +100,5 @@ const About: React.FC = () => {
   );
 };
 
-
 export default About;
+
