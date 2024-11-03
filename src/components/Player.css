@@ -19,3 +19,13 @@
 .loading-text {
     color: gray;
 }
+
+.on-air-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .program-info {
+    margin-left: 40px; /* Adds some spacing between the Player and Program Information */
+  }
+  

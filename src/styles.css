@@ -85,14 +85,17 @@
 }
 
 .test-website .mdl-card__actions {
-    margin: 0;
-    padding: 4px 40px;
+    display: flex;
+    justify-content: flex-start; /* Aligns items to the left */
+    padding: 4px 40px; /* Adjust as needed to control spacing */
     color: inherit;
 }
 
 .test-website .mdl-card__actions a {
+    position: relative; /* Allows precise control */
+    left: -20px; /* Move it left by 20px; adjust this as needed */
     color: #00BCD4;
-    margin: 0;
+    text-decoration: none;
 }
 
 .test-website .mdl-card__actions a:hover,
@@ -146,3 +149,4 @@
 .test-website .mdl-layout__tab-panel:not(#overview) {
     background-color: white;
 }
+
