@@ -75,6 +75,20 @@ const About: React.FC = () => {
       <h2></h2>
       <h1 className='tag-filter'>Tags filtered</h1>
       <TagsInput value={tags} onChange={setTags} />
+      <div className='tag-bank'>
+      {allTags.map((tag) => {
+                return (
+                  <button
+                    key={`add-button-${id}`}
+                    type='button'
+                    onClick={addTag(tag)}
+                  >
+                    #{tag}
+                  </button>
+                );
+              })}
+      </div>
+
       <div className="DJ-container">
         {projects
           .filter((proj) => matchTags(proj.tags, tags))
