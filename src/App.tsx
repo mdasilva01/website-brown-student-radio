@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar'; // Import the Navbar component
+import Footer from './components/Footer'; // Import the Footer component
 import HomePage from './pages/Home';
 import AboutPage from './pages/About';
 import SchedulePage from './pages/Schedule';
@@ -11,7 +12,7 @@ import BlogPost from './pages/BlogPost';
 const App: React.FC = () => {
   return (
     <Router>
-      <div>
+      <div style={styles.appContainer}>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -26,6 +27,17 @@ const App: React.FC = () => {
       </div>
     </Router>
   );
+};
+
+const styles = {
+  appContainer: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    minHeight: '100vh',
+  },
+  contentContainer: {
+    flex: 1,  
+  },
 };
 
 export default App;
