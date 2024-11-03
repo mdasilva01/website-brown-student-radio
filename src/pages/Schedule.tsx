@@ -67,7 +67,7 @@ const Home: React.FC = () => {
                 <section className="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                   <div className="mdl-card mdl-cell mdl-cell--12-col">
                     <div className="mdl-card__supporting-text center">
-                      <h4> <b> On-air (Click on the Disc Below to Listen!)</b></h4>
+                      <h4> <b> Tune in! (Click on the Disc Below to Listen!)</b></h4>
                       {/* spinitron widget for showing the currently playing track */}
                       
                       <div className="on-air-container shows-box">
@@ -94,7 +94,7 @@ const Home: React.FC = () => {
                 <section className="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp center">
                   <div className="mdl-card mdl-cell mdl-cell--12-col">
                     <div className="mdl-card__supporting-text center">
-                      <h4> <b> On Air/Coming up </b></h4>
+                      <h4> <b> On Air/Up Next </b></h4>
                       {/* spinitron widget for displaying NEXT FIVE upcoming shows */}
 
                       <div data-station="WBRU" data-count="5" data-action="upcoming-shows" data-layout="1" data-server="programs.testradio.org" className="spinitron-js-widget shows-box"></div>
