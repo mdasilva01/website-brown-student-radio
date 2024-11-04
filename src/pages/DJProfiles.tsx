@@ -8,12 +8,44 @@ type Project = {
   tags: string[];
 };
 
+const allTags = [
+  'DJ',
+  'Blues',
+  'Jazz',
+  'Country',
+  'Carnatic',
+  'Classical',
+  'Hip Hop',
+  'Rap'
+]
 
 const About: React.FC = () => {
 
   const [tags, setTags] = React.useState(["DJ"]);
   const [projects, setProjects] = useState<Project[]>([]);
   const id = React.useId();
+
+  async function queryObjects(query: any) {
+    const response = await fetch(`https://api.cosmicjs.com/v3/buckets/my-project-production-8d04eb10-94a1-11ef-bd4d-8d05011bda81/objects?pretty=true&query=%7B%22type%22:%22authors%22%7D&limit=10&read_key=FKGvgkSabJOy897MA5ZsYJosVRbb67gqVDf8iYauhw8waywfhP&depth=1&props=slug,title,metadata`);
+    return (await response.json()).objects;
+}
+
+  function getAllTags()
+  {
+    var tags: string[] = []
+    for (let i = 0; i < projects.length; i++)
+    {
+      let tagList = projects[i].tags;
+      for (let k = 0; i < projects.length; i++)
+      {
+        if (!tags.includes(projects[i].tags[k]))
+        {
+          tags.push(projects[i].tags[k]);
+        }
+      }
+    }
+    return tags;
+  }
 
   useEffect(() => {
     fetch('https://api.cosmicjs.com/v3/buckets/my-project-production-8d04eb10-94a1-11ef-bd4d-8d05011bda81/objects?pretty=true&query=%7B%22type%22:%22authors%22%7D&limit=10&read_key=FKGvgkSabJOy897MA5ZsYJosVRbb67gqVDf8iYauhw8waywfhP&depth=1&props=slug,title,metadata')
