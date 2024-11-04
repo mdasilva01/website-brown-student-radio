@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './DJProfiles.css';
-//import TagsInput from '../components/TagsInput';
 import TagsInput from 'react-tagsinput';
-import 'react-tagsinput/react-tagsinput.css'
+
 type Project = {
   title: string;
   description: string;
@@ -88,8 +87,7 @@ const About: React.FC = () => {
 
   return (
     <div className='tags-container'>
-      <h2></h2>
-      <h1 className='tag-filter'>Tags filtered</h1>
+      <h1 className='tag-filter'>Tags Filtered</h1>
       <TagsInput value={tags} onChange={setTags} />
       <div className='tag-bank'>
       {allTags.map((tag) => {
@@ -130,5 +128,5 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
 
+export default About;
