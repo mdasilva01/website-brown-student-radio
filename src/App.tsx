@@ -24,7 +24,6 @@ const App: React.FC = () => {
           <Route path="/blog" element={<Outlet />}>
             <Route path=":postID" element={<BlogPost />} />
           </Route>
-          <Route path="/blog-upload" element={<BlogUpload />} />
         </Routes>
       </div>
     </Router>

@@ -1,9 +1,26 @@
-.post-container {
-    width: 800px;
-    margin: auto;
-}
 hr {
     margin: 1em;
+}
+nav {
+    margin-bottom: 0;
+}
+.post-main-row > td {
+    width: 50%;
+    height: calc(100vh - 4rem);
+}
+.post-main-col {
+    vertical-align: top;
+    overflow-y: scroll;
+}
+.post-main-container {
+    height: calc(100vh - 4rem);
+    overflow-y: scroll;
+    padding-top: 1rem;
+}
+.post-image-col img {
+    width: 100%;
+    margin: auto;
+    padding: 3em;
 }
 .comment-table {
     width: 100%;
