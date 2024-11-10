@@ -2,14 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './DJProfiles.css';
 //import TagsInput from '../components/TagsInput';
 import TagsInput from 'react-tagsinput';
-import 'react-tagsinput/react-tagsinput.css'
+//import 'react-tagsinput/react-tagsinput.css'
 type Project = {
   title: string;
   description: string;
   tags: string[];
 };
 
-const allTags = [
+let allTags = [
   'DJ',
   'Blues',
   'Jazz',
@@ -31,17 +31,17 @@ const About: React.FC = () => {
     return (await response.json()).objects;
 }
 
-  function getAllTags()
+  function getAllTags(Projects: any[])
   {
-    var tags: string[] = []
-    for (let i = 0; i < projects.length; i++)
+    let tags: string[] = []
+    for (let i = 0; i < Projects.length; i++)
     {
-      let tagList = projects[i].tags;
-      for (let k = 0; i < projects.length; i++)
+      let tagList = Projects[i].tags;
+      for (let k = 0; i < Projects[i].tags.length; i++)
       {
-        if (!tags.includes(projects[i].tags[k]))
+        if (!tags.includes(Projects[i].tags[k]))
         {
-          tags.push(projects[i].tags[k]);
+          tags.push(Projects[i].tags[k]);
         }
       }
     }
@@ -59,11 +59,12 @@ const About: React.FC = () => {
             tags: obj.metadata.tags.data
           }));
           setProjects(formattedProjects);
+          allTags = getAllTags(formattedProjects);
+          setTags(allTags);
         }
       })
       .catch(error => console.error('Error fetching projects:', error));
   }, []);
-
 
   const addTag = useCallback(
     (tag: string) => () => {
@@ -89,7 +90,7 @@ const About: React.FC = () => {
   return (
     <div className='tags-container'>
       <h2></h2>
-      <h1 className='tag-filter'>Tags filtered</h1>
+      <h1 className='tag-filter'>DJ's</h1>
       <TagsInput value={tags} onChange={setTags} />
       <div className='tag-bank'>
       {allTags.map((tag) => {
