@@ -1,81 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './DJProfiles.css';
 import TagsInput from 'react-tagsinput';
+
+type Project = {
+  title: string;
+  description: string;
+  tags: string[];
+};
+
 
 const About: React.FC = () => {
 
   const [tags, setTags] = React.useState(["DJ"]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const id = React.useId();
 
-  const projects = [
-    {
-      title: 'James',
-      description:
-        'DJ from Mars',
-      tags: ['DJ', 'Blues'],
-    },
-    {
-      title: 'Yohan',
-      description: 'National jazz competitor',
-      tags: ['DJ', 'Jazz'],
-    },
-    {
-      title: 'Danny',
-      description: 'AI powered bot',
-      tags: ['DJ', 'Country', 'Blues'],
-    },
-    {
-      title: 'Suresh',
-      description: 'Classically trained singer',
-      tags: ['DJ', 'Carnatic', 'Classical', 'Hip Hop'],
-    },
-    {
-      title: 'Abdullah',
-      description: 'Top 100 national rapper',
-      tags: [
-        'DJ', 
-        'Rap',
-        'Classical'
-      ],
-    },
-    {
-      title: 'Jane',
-      description: 'Blues fanatic ',
-      tags: [
-        'DJ', 
-        'Blues'
-      ],
-    },
-    {
-      title: 'Arielle',
-      description: 'Country singer from Texas',
-      tags: ['DJ', 'Country', 'Classical'],
-    },
-    {
-      title: 'Shi Hun',
-      description: 'Fire powered DJ',
-      tags: [
-        'DJ', 
-        'Hip Hop',
-        'Jazz'
-      ],
-    },
-  ];
+  useEffect(() => {
+    fetch('https://api.cosmicjs.com/v3/buckets/my-project-production-8d04eb10-94a1-11ef-bd4d-8d05011bda81/objects?pretty=true&query=%7B%22type%22:%22authors%22%7D&limit=10&read_key=FKGvgkSabJOy897MA5ZsYJosVRbb67gqVDf8iYauhw8waywfhP&depth=1&props=slug,title,metadata')
+      .then(response => response.json())
+      .then(data => {
+        if (data.objects) {
+          const formattedProjects: Project[] = data.objects.map((obj: any) => ({
+            title: obj.title,
+            description: obj.metadata.description,
+            tags: obj.metadata.tags.data
+          }));
+          setProjects(formattedProjects);
+        }
+      })
+      .catch(error => console.error('Error fetching projects:', error));
+  }, []);
 
-  const addTag = React.useCallback(
+
+  const addTag = useCallback(
     (tag: string) => () => {
       if (!tags.includes(tag)) {
-        return setTags((prevTags) => [...prevTags, tag]);
+        setTags((prevTags) => [...prevTags, tag]);
       }
     },
     [tags]
   );
 
-  const deleteTag = React.useCallback(
+  const deleteTag = useCallback(
     (tagId: string) => () => {
-      const tagsFiltered = tags.filter((tag) => {
-        return tag !== tagId;
-      });
+      const tagsFiltered = tags.filter((tag) => tag !== tagId);
       setTags(tagsFiltered);
     },
     [tags]
@@ -92,27 +60,23 @@ const About: React.FC = () => {
       <div className="DJ-container">
         {projects
           .filter((proj) => matchTags(proj.tags, tags))
-          .map(({ title, description, tags }) => {
-            return (
-              <div key={`card-${id}`} className='card'>
-                <div>
-                  <p>{title}</p>
-                  <p>{description}</p>
-                </div>
-                {tags.map((tag) => {
-                  return (
-                    <button
-                      key={`add-button-${id}`}
-                      type='button'
-                      onClick={addTag(tag)}
-                    >
-                      #{tag}
-                    </button>
-                  );
-                })}
+          .map(({ title, description, tags }, index) => (
+            <div key={`card-${index}`} className='card'>
+              <div>
+                <p>{title}</p>
+                <p>{description}</p>
               </div>
-            );
-          })}
+                {tags.map((tag) => (
+                  <button
+                  key={`add-button-${tag}-${index}`}
+                  type='button'
+                  onClick={addTag(tag)}
+                  >
+                      #{tag}
+                </button>
+              ))}
+            </div>
+          ))}
       </div>
     </div>
   );
