@@ -5,3 +5,11 @@
 hr {
     margin: 1em;
 }
+input, textarea {
+    width: 100%;
+    font-size: 100%;
+}
+.comment {
+    white-space: pre-line;
+    margin-bottom: 1em;
+}
