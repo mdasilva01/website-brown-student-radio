@@ -5,24 +5,24 @@ const Footer: React.FC = () => {
   return (
     <footer style={styles.footer}>
       <div style={styles.leftSection}>
-        <p>Brown Student & Community Radio</p>
-        <p>Box #1934</p>
+        <p>ABOUT</p>
+        {/* <p>Box #1934</p>
         <p>Providence, Rhode Island 02912</p>
-        <p>Email: <a href="mailto:bsrlive2018@gmail.com" style={styles.email}>bsrlive2018@gmail.com</a></p>
+        <p>Email: <a href="mailto:bsrlive2018@gmail.com" style={styles.email}>bsrlive2018@gmail.com</a></p> */}
       </div>
       <div style={styles.rightSection}>
-        <a href="https://open.spotify.com/user/ndis7o6g0u1oq2xvgww7itbvt?si=h8RtzXcKRPeMLna5J2CewA&nd=1&dlsi=23f512681ed14c66" target="_blank" rel="noopener noreferrer" aria-label="Spotify" style={styles.iconLink}>
-          <FaSpotify />
+      <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbsrlive" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style={styles.iconLink}>
+          <FaTwitter />
         </a>
         <a href="https://www.instagram.com/bsrlive/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={styles.iconLink}>
           <FaInstagram />
         </a>
-        <a href="https://www.facebook.com/bsrlive/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={styles.iconLink}>
+        <a href="https://open.spotify.com/user/ndis7o6g0u1oq2xvgww7itbvt?si=h8RtzXcKRPeMLna5J2CewA&nd=1&dlsi=23f512681ed14c66" target="_blank" rel="noopener noreferrer" aria-label="Spotify" style={styles.iconLink}>
+          <FaSpotify />
+        </a>
+        {/* <a href="https://www.facebook.com/bsrlive/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={styles.iconLink}>
           <FaFacebook />
-        </a>
-        <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbsrlive" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style={styles.iconLink}>
-          <FaTwitter />
-        </a>
+        </a> */}
       </div>
     </footer>
   );
@@ -35,10 +35,10 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     padding: '20px',
-    backgroundColor: '#F7F8F1',
+    backgroundColor: '#FFFFFF',
     fontFamily: "'Courier New', Courier, monospace",
-    color: '#6AB39E',
-    borderTop: '2px solid #6AB39E',
+    color: '#000000',
+    borderTop: '2px solid #FF7083',
   },
   leftSection: {
     flex: 1,
@@ -53,12 +53,12 @@ const styles = {
     fontSize: '24px',
   },
   email: {
-    color: '#6AB39E',
+    color: '#000000',
     textDecoration: 'none',
     fontWeight: 'bold',
   },
   iconLink: {
-    color: '#6AB39E',
+    color: '#FFFFFF',
     textDecoration: 'none',
     padding: '15px',
     borderRadius: '50%',  
