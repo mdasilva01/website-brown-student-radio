@@ -5,18 +5,29 @@ export async function queryObjects(query) {
     const response = await fetch(`https://api.cosmicjs.com/v3/buckets/bsr-production/objects/?read_key=${API_READ_KEY}&query=${encodeURIComponent(JSON.stringify(query))}&limit=100`);
 
     const result = await response.json();
-    if (result.objects) return result.objects;
-    else return [];
+    return result.objects || [];
 }
 
 export async function postObject(object) {
     await fetch(
-        `https://api.cosmicjs.com/v3/buckets/bsr-production/objects/?write_key=${API_WRITE_KEY}`,
+        `https://api.cosmicjs.com/v3/buckets/bsr-production/objects/`,
         {
             method: "POST",
             body: JSON.stringify(object),
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${API_WRITE_KEY}`
+            }
+        }
+    );
+}
+
+export async function deleteObject(id) {
+    await fetch(
+        `https://api.cosmicjs.com/v3/buckets/bsr-production/objects/${id}`,
+        {
+            method: "DELETE",
+            headers: {
                 "Authorization": `Bearer ${API_WRITE_KEY}`
             }
         }

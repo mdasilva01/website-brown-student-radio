@@ -8,6 +8,7 @@ import SchedulePage from './pages/Schedule';
 import ContactPage from './pages/Contact';
 import DJProfilesPage from './pages/DJProfiles';
 import BlogPost from './pages/BlogPost';
+import BlogUpload from './pages/BlogUpload';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Route path="/blog" element={<Outlet />}>
             <Route path=":postID" element={<BlogPost />} />
           </Route>
+          <Route path="/blog-upload" element={<BlogUpload />} />
         </Routes>
       </div>
     </Router>

@@ -5,11 +5,55 @@
 hr {
     margin: 1em;
 }
-input, textarea {
+.comment-table {
     width: 100%;
-    font-size: 100%;
 }
 .comment {
     white-space: pre-line;
     margin-bottom: 1em;
+    vertical-align: top;
+}
+.comment p, b {
+    margin-top: 0.5em;
+}
+.comment td:first-child {
+    width: 20%;
+}
+.comment td:nth-child(2) p {
+    border-left: 1px solid gray;
+    padding-left: 0.5em;
+}
+.comment td:last-child {
+    width: 2em;
+}
+.comment-delete {
+    width: 2em;
+}
+.comment-name-input {
+    width: 50%;
+    font-size: 100%;
+}
+textarea {
+    width: 100%;
+    font-size: 100%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+.comment-post-button {
+    border-radius: 0;
+    font-size: 100%;
+    margin: 0;
+}
+.loader {
+    border: 0.5em solid #f3f3f3; /* Light grey */
+    border-top: 0.5em solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    animation: spin 2s linear infinite;
+    margin-left: 1em;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
