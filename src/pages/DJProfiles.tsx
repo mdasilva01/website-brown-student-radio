@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './DJProfiles.css';
 import TagsInput from 'react-tagsinput';
-import 'react-tagsinput/react-tagsinput.css'
 type Project = {
   photo: string;
   title: string;
@@ -67,8 +66,6 @@ const About: React.FC = () => {
             };
           });
           setProjects(formattedProjects);
-          allTags = getAllTags(formattedProjects);
-          setTags(allTags);
         }
       })
       .catch(error => console.error('Error fetching projects:', error));
