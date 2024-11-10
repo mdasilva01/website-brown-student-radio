@@ -3,6 +3,7 @@ import './DJProfiles.css';
 import TagsInput from 'react-tagsinput';
 
 type Project = {
+  photo: string;
   title: string;
   description: string;
   tags: string[];
@@ -30,11 +31,19 @@ const About: React.FC = () => {
       .then(response => response.json())
       .then(data => {
         if (data.objects) {
-          const formattedProjects: Project[] = data.objects.map((obj: any) => ({
-            title: obj.title,
-            description: obj.metadata.description,
-            tags: obj.metadata.tags.data
-          }));
+          const formattedProjects: Project[] = data.objects.map((obj: any) => {
+            const photoUrl =
+              obj.metadata.photo && obj.metadata.photo.url
+                ? obj.metadata.photo.url
+                : '';
+            return {
+              photo: photoUrl,
+              title: obj.title,
+              description: obj.metadata.description,
+              tags: obj.metadata.tags.data
+             
+            };
+          });
           setProjects(formattedProjects);
         }
       })
@@ -84,9 +93,10 @@ const About: React.FC = () => {
       <div className="DJ-container">
         {projects
           .filter((proj) => matchTags(proj.tags, tags))
-          .map(({ title, description, tags }, index) => (
+          .map(({ title, description, photo, tags }, index) => (
             <div key={`card-${index}`} className='card'>
               <div>
+                {photo && <img src={photo} alt={title} />}
                 <p>{title}</p>
                 <p>{description}</p>
               </div>
