@@ -25,6 +25,7 @@ const App: React.FC = () => {
             <Route path=":postID" element={<BlogPost />} />
           </Route>
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
