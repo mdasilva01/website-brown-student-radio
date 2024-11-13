@@ -1,35 +1,58 @@
-/* Style the navbar container */
-nav {
-    background-color: #333;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Style the unordered list to be displayed horizontally */
-  ul.navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around; /* Spreads items evenly */
-  }
-  
-  /* Style each list item */
-  ul.navbar li {
-    display: inline;
-  }
-  
-  /* Style the links */
-  ul.navbar li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Hover effect for the links */
-  ul.navbar li a:hover {
-    background-color: #555;
-  }
-  
+@import '../styles.css';
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Full width of the screen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.navbar li:hover {
+  background-color: var(--primary-color);
+}
+
+.navbar li {
+  list-style: none;
+  width: 100%; /* Each navbar item spans full width */
+  text-align: center;
+  border-top: 2px solid black;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 20px;
+  width: 100%; /* Full width of the screen */
+}
+
+/* Styles for the Home link with three sections */
+.home-link a {
+  display: flex;
+  justify-content: space-between; /* Spread out the three sections */
+  align-items: center;
+  width: 100%; /* Span full width */
+}
+
+.left-text, .center-text, .right-text {
+  flex: 1;
+}
+
+.left-text {
+  text-align: left;
+  padding-left: 10px; /* Add padding for spacing */
+}
+
+.center-text {
+  text-align: center;
+}
+
+.right-text {
+  text-align: right;
+  padding-right: 10px; /* Add padding for spacing */
+}
