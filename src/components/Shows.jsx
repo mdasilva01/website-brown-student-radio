@@ -37,6 +37,7 @@ export default function Shows() {
                             <tr>
                                 <td>{show[0]}</td>
                                 <td>{show[1]}</td>
+                                <td>{show[2]}</td>
                             </tr>
                         ))}
                     </table>

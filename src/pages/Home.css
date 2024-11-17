@@ -79,3 +79,12 @@
     max-width: 800px;
     border-radius: 40px;
 }
+
+.title{
+    font-size: 150px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 75vh;           /* Full viewport height */
+    text-align: center;      /* Center text within the container */
+}

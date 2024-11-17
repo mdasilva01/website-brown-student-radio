@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Player from '../components/Player';
 
 // Main functional component for the Home page
 const Home: React.FC = () => {
@@ -50,7 +51,7 @@ const Home: React.FC = () => {
           <div className="mdl-layout mdl-js-layout">
             <header className="mdl-layout__header mdl-layout__header--scroll">
               <div className="mdl-layout__header-row">
-                <h3 className="mdl-layout-title">Brown Studio Radio Schedule </h3>
+                <h3 className="mdl-layout-title">Brown Studio Radio Schedule</h3>
                 <div className="mdl-layout-spacer"></div>
                 <nav className="mdl-navigation">
                   {/* nav links to show and event info, and calendar */}
@@ -65,30 +66,44 @@ const Home: React.FC = () => {
                 {/* section displaying current on-air show */}
                 <section className="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                   <div className="mdl-card mdl-cell mdl-cell--12-col">
-                    <div className="mdl-card__supporting-text">
-                      <h4>On-air</h4>
+                    <div className="mdl-card__supporting-text center">
+                      <h4> <b> Tune in! (Click on the Disc Below to Listen!)</b></h4>
                       {/* spinitron widget for showing the currently playing track */}
-                      <div className="spinitron-js-widget" data-action="now-playing-v2" data-station="TEST" data-layout="1"></div>
-                      <script src="https://widgets.spinitron.com/static/js/widget.js"></script>
-                    </div>
+                      
+                      <div className="on-air-container shows-box">
+                        <Player />
+                        <div className="program-info">
+                          
+                          <div data-station="wbru" data-count="1" data-action="upcoming-shows" 
+                              data-image="1" data-description="1" className="spinitron-js-widget"></div>
+                        </div>
+                      </div>
+  </div>
                     <div className="mdl-card__actions">
                       {/* link to see more information about the on-air show */}
-                      <a href="https://programs.testradio.org/WBRU/?layout=1" className="mdl-button">See more</a>
+                      <a href="https://programs.testradio.org/WBRU/?layout=1" 
+   className="mdl-button"
+   style={{ position: 'relative', left: '620px' }}>
+   See more
+</a>
                     </div>
                   </div>
                 </section>
 
                 {/* section displaying upcoming shows */}
-                <section className="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <section className="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp center">
                   <div className="mdl-card mdl-cell mdl-cell--12-col">
-                    <div className="mdl-card__supporting-text">
-                      <h4>Coming up</h4>
+                    <div className="mdl-card__supporting-text center">
+                      <h4> <b> On Air/Up Next </b></h4>
                       {/* spinitron widget for displaying NEXT FIVE upcoming shows */}
-                      <div data-station="WBRU" data-count="5" data-action="upcoming-shows" data-layout="1" data-server="programs.testradio.org" className="spinitron-js-widget"></div>
+
+                      <div data-station="WBRU" data-count="5" data-action="upcoming-shows" data-layout="1" data-server="programs.testradio.org" className="spinitron-js-widget shows-box"></div>
                     </div>
                     <div className="mdl-card__actions">
                       {/* link to see the full schedule of upcoming shows */}
-                      <a href="https://programs.testradio.org/WBRU/calendar?layout=1" className="mdl-button">See full schedule</a>
+                      <a href="https://programs.testradio.org/WBRU/calendar?layout=1" className="mdl-button"
+   style={{ position: 'relative', left: '-70px' }}>
+   See more</a>
                     </div>
                   </div>
                 </section>

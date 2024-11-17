@@ -24,6 +24,7 @@ const App: React.FC = () => {
             <Route path=":postID" element={<BlogPost />} />
           </Route>
         </Routes>
+        {/* <Footer /> */}
       </div>
     </Router>
   );
@@ -34,10 +35,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'column' as const,
     minHeight: '100vh',
+    paddingBottom: '60px', // Add padding to avoid overlap with navbar
   },
   contentContainer: {
-    flex: 1,  
+    flex: 1,
   },
 };
+
 
 export default App;
