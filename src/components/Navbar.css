@@ -56,3 +56,9 @@
   text-align: right;
   padding-right: 10px; /* Add padding for spacing */
 }
+
+.navbar span {
+  font-size: 0.8rem; /* Smaller font for text inside spans */
+  padding: 0; /* Remove padding for tighter layout */
+  text-align: right;
+}
