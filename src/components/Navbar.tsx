@@ -6,22 +6,32 @@ const Navbar = () => {
   return (
     <nav>
       <ul className="navbar">
-      <li className="home-link">
-          <Link to="/">
-            <span className="left-text">NOW LIVE:</span>
-            <span className="center-text">SHOW NAME</span>
-            <span className="right-text">DJ NAME(S)</span>
+        <li className="home-link">
+          <Link to="/Schedule">
+            <div className="left-text">NOW LIVE:</div>
+            <div className="center-text">INSERT SHOW</div>
+            <div className="right-text">INSERT DJ NAME</div>
           </Link>
         </li>
-        <li className="home-link"><Link to="/">
-          <span className="left-text">BLOG POSTS</span>
-        </Link></li>
-        <li className="home-link"><Link to="/DJProfiles">
-          <span className="left-text">DJ'S</span>
-        </Link></li>
-        <li className="home-link"><Link to="/about">
-          <span className="left-text">ABOUT</span>
-        </Link></li>
+
+        <li className="home-link">
+          <Link to="/">
+            <div className="left-text">BLOG POSTS</div>
+          </Link>
+        </li>
+
+        <li className="home-link">
+          <Link to="/DJProfiles">
+            <div className="left-text">DJ'S</div>
+          </Link>
+        </li>
+
+        <li className="home-link">
+          <Link to="/about">
+            <div className="left-text">ABOUT</div>
+          </Link>
+        </li>
+
         {/* <li><Link to="/contact">Contact</Link></li> */}
       </ul>
     </nav>
