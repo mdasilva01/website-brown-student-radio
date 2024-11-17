@@ -30,7 +30,7 @@ const About: React.FC = () => {
     return (await response.json()).objects;
 }
 
-  function getAllTags()
+function getAllTags(projects: string | any[])
   {
     var tags: string[] = []
     for (let i = 0; i < projects.length; i++)
@@ -66,6 +66,8 @@ const About: React.FC = () => {
             };
           });
           setProjects(formattedProjects);
+          const newTags = getAllTags(projects);
+          setTags(newTags);
         }
       })
       .catch(error => console.error('Error fetching projects:', error));
@@ -88,32 +90,19 @@ const About: React.FC = () => {
     [tags]
   );
 
-  const matchTags = (current: string | any[], target: any[]) => {
-    return target.every((tag) => current.includes(tag));
+  const matchTags = (current: Project, target: any[]) => {
+    return target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() == tag.toLowerCase());
   };
 
   return (
     <div className='tags-container'>
       <h2></h2>
-      <h1 className='tag-filter'>Tags filtered</h1>
+      <h1 className='tag-filter'>DJ's</h1>
       <TagsInput value={tags} onChange={setTags} />
-      <div className='tag-bank'>
-      {allTags.map((tag) => {
-                return (
-                  <button
-                    key={`add-button-${id}`}
-                    type='button'
-                    onClick={addTag(tag)}
-                  >
-                    #{tag}
-                  </button>
-                );
-              })}
-      </div>
 
       <div className="DJ-container">
         {projects
-          .filter((proj) => matchTags(proj.tags, tags))
+          .filter((proj) => matchTags(proj, tags))
           .map(({ title, description, photo, tags }, index) => (
             <div key={`card-${index}`} className='card'>
               <div>
