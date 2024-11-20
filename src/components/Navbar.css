@@ -15,7 +15,12 @@
   background-color: var(--primary-color);
 }
 
+.navbar li.active {
+  background-color: var(--primary-color); /* Highlight active item */
+}
+
 .navbar li {
+  cursor: pointer;
   list-style: none;
   width: 100%; /* Each navbar item spans full width */
   text-align: center;

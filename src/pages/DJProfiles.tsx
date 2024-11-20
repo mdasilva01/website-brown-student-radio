@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './DJProfiles.css';
 import TagsInput from 'react-tagsinput';
+
 type Project = {
   photo: string;
   title: string;
@@ -8,69 +9,28 @@ type Project = {
   tags: string[];
 };
 
-let allTags = [
-  'DJ',
-  'Blues',
-  'Jazz',
-  'Country',
-  'Carnatic',
-  'Classical',
-  'Hip Hop',
-  'Rap'
-]
-
 const About: React.FC = () => {
-
-  const [tags, setTags] = React.useState(["DJ"]);
+  const [tags, setTags] = useState<string[]>(["DJ"]);
   const [projects, setProjects] = useState<Project[]>([]);
-  const id = React.useId();
-
-  async function queryObjects(query: any) {
-    const response = await fetch(`https://api.cosmicjs.com/v3/buckets/my-project-production-8d04eb10-94a1-11ef-bd4d-8d05011bda81/objects?pretty=true&query=%7B%22type%22:%22authors%22%7D&limit=10&read_key=FKGvgkSabJOy897MA5ZsYJosVRbb67gqVDf8iYauhw8waywfhP&depth=1&props=slug,title,metadata`);
-    return (await response.json()).objects;
-}
-
-function getAllTags(projects: string | any[])
-  {
-    var tags: string[] = []
-    for (let i = 0; i < projects.length; i++)
-    {
-      let tagList = projects[i].tags;
-      for (let k = 0; i < projects.length; i++)
-      {
-        if (!tags.includes(projects[i].tags[k]))
-        {
-          tags.push(projects[i].tags[k]);
-        }
-      }
-    }
-    return tags;
-  }
+  const [currentStartIndex, setCurrentStartIndex] = useState<number>(0);
 
   useEffect(() => {
-    fetch('https://api.cosmicjs.com/v3/buckets/bsr-production/objects?pretty=true&query=%7B%22type%22:%22user-profiles%22%7D&limit=10&read_key=DsCCqr1xYA6ByGkhlBdK7ws9fLwvNMVCHRi1yF6ENUFJwsf8jY&depth=1&props=slug,title,metadata,')
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      'https://api.cosmicjs.com/v3/buckets/bsr-production/objects?pretty=true&query=%7B%22type%22:%22user-profiles%22%7D&limit=10&read_key=DsCCqr1xYA6ByGkhlBdK7ws9fLwvNMVCHRi1yF6ENUFJwsf8jY&depth=1&props=slug,title,metadata,'
+    )
+      .then((response) => response.json())
+      .then((data) => {
         if (data.objects) {
-          const formattedProjects: Project[] = data.objects.map((obj: any) => {
-            const photoUrl =
-              obj.metadata.photo && obj.metadata.photo.url
-                ? obj.metadata.photo.url
-                : '';
-            return {
-              photo: photoUrl,
-              title: obj.title,
-              description: obj.metadata.description,
-              tags: obj.metadata.tags.data
-             
-            };
-          });
+          const formattedProjects: Project[] = data.objects.map((obj: any) => ({
+            photo: obj.metadata.photo?.url || '',
+            title: obj.title,
+            description: obj.metadata.description,
+            tags: obj.metadata.tags.data || [],
+          }));
           setProjects(formattedProjects);
-          const newTags = getAllTags(projects);
-          setTags(newTags);
         }
       })
-      .catch(error => console.error('Error fetching projects:', error));
+      .catch((error) => console.error('Error fetching projects:', error));
   }, []);
 
   const addTag = useCallback(
@@ -82,49 +42,58 @@ function getAllTags(projects: string | any[])
     [tags]
   );
 
-  const deleteTag = useCallback(
-    (tagId: string) => () => {
-      const tagsFiltered = tags.filter((tag) => tag !== tagId);
-      setTags(tagsFiltered);
-    },
-    [tags]
-  );
+  const matchTags = (current: Project, target: string[]) =>
+    target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() === tag.toLowerCase());
 
-  const matchTags = (current: Project, target: any[]) => {
-    return target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() == tag.toLowerCase());
+  const handleLeftClick = () => {
+    setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - 4));
+  };
+
+  const handleRightClick = () => {
+    setCurrentStartIndex((prevIndex) =>
+      Math.min(projects.length - 4, prevIndex + 4)
+    );
   };
 
   return (
-    <div className='tags-container'>
-      <h2></h2>
-      <h1 className='tag-filter'>DJ's</h1>
+    <div className="tags-container">
       <TagsInput value={tags} onChange={setTags} />
 
-      <div className="DJ-container">
-        {projects
-          .filter((proj) => matchTags(proj, tags))
-          .map(({ title, description, photo, tags }, index) => (
-            <div key={`card-${index}`} className='card'>
-              <div>
-                {photo && <img src={photo} alt={title} />}
-                <p>{title}</p>
-                <p>{description}</p>
-              </div>
+      <div className="carousel-container">
+        <button className="carousel-arrow left-arrow" onClick={handleLeftClick}>
+          &#9664;
+        </button>
+
+        <div className="DJ-container">
+          {projects
+            .filter((proj) => matchTags(proj, tags))
+            .slice(currentStartIndex, currentStartIndex + 4)
+            .map(({ title, description, photo, tags }, index) => (
+              <div key={`card-${index}`} className="card">
+                <div>
+                  {photo && <img src={photo} alt={title} />}
+                  <p>{title}</p>
+                  <p>{description}</p>
+                </div>
                 {tags.map((tag) => (
                   <button
-                  key={`add-button-${tag}-${index}`}
-                  type='button'
-                  onClick={addTag(tag)}
+                    key={`add-button-${tag}-${index}`}
+                    type="button"
+                    onClick={addTag(tag)}
                   >
-                      #{tag}
-                </button>
-              ))}
-            </div>
-          ))}
+                    #{tag}
+                  </button>
+                ))}
+              </div>
+            ))}
+        </div>
+
+        <button className="carousel-arrow right-arrow" onClick={handleRightClick}>
+          &#9654;
+        </button>
       </div>
     </div>
   );
 };
-
 
 export default About;

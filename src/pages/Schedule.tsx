@@ -73,7 +73,7 @@ const Home: React.FC = () => {
 <div className="player-container">
   <Player /> 
   <div className="spinitron-js-widget-container widget"> 
-  <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=wbru&count=1&image=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
+  <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=wbru&count=1&image=0&sharing=0&cover=0&player=0&merch=0" allow="encrypted-media"></iframe>
   </div>
 
   <div className="spinitron-js-widget-container other-widget"> 

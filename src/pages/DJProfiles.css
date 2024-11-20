@@ -1,99 +1,127 @@
 button {
-    padding: 5px;
-    background-color: rgb(253, 127, 127);
-    border-radius: 10%;
-    margin: 5px;
-  }
-  
-  button:hover {
-    background-color: rgb(253, 127, 127);
-  }
-  
-  .card {
-    padding: 20px;
-    /*width: 100%;*/
-    height: 100%;
-    background-color: rgb(234, 234, 234);
-    margin: 10px 0;
-    
-  }
+  padding: 5px;
+  background-color: rgb(253, 127, 127);
+  border-radius: 10%;
+  margin: 5px;
+}
 
-  .react-tagsinput {
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    overflow: hidden;
-    padding-left: 5px;
-    padding-top: 5px;
-  }
-  
-  .react-tagsinput--focused {
-    border-color: rgb(253, 127, 127);
-  }
-  
-  .react-tagsinput-tag {
-    background-color: rgb(253, 127, 127);
-    border-radius: 3px;
-    border: 2px solid #000000;
-    color: #000000;
-    display: inline-block;
-    font-family: sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    padding: 5px;
-  }
-  
-  .react-tagsinput-remove {
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .react-tagsinput-tag a::before {
-    content: " ×";
-  }
-  
-  .react-tagsinput-input {
-    background: transparent;
-    border: 0;
-    color: rgb(0, 0, 0);
-    font-family: sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    margin-bottom: 6px;
-    margin-top: 1px;
-    outline: none;
-    padding: 5px;
-    width: 80px;
-  }
-  
-  .close {
-    border: none;
-    padding: 10px;
-    background-color: rgb(253, 127, 127);
-    margin: 0 10px;
-  }
-  
-  .tag-filter {
-    position: relative;
-    justify-content: center;
-    padding: 20px 10px;
-  }
-  
-  .tags-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 300px;
-  }
+button:hover {
+  background-color: rgb(253, 127, 127);
+}
 
-  .DJ-container{
-    display: grid;
-    row-gap: 20px;
-    column-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 10px;
-  }
+.card {
+  padding: 20px;
+  /*width: 100%;*/
+  height: 100%;
+  background-color: rgb(234, 234, 234);
+  margin: 10px 0;
   
+}
+
+.react-tagsinput {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.react-tagsinput--focused {
+  border-color: rgb(253, 127, 127);
+}
+
+.react-tagsinput-tag {
+  background-color: rgb(253, 127, 127);
+  border-radius: 3px;
+  border: 2px solid #000000;
+  color: #000000;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.react-tagsinput-remove {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.react-tagsinput-tag a::before {
+  content: " ×";
+}
+
+.react-tagsinput-input {
+  background: transparent;
+  border: 0;
+  color: rgb(0, 0, 0);
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  margin-top: 1px;
+  outline: none;
+  padding: 5px;
+  width: 80px;
+}
+
+.close {
+  border: none;
+  padding: 10px;
+  background-color: rgb(253, 127, 127);
+  margin: 0 10px;
+}
+
+.tag-filter {
+  position: relative;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 300px;
+}
+
+.DJ-container{
+  display: grid;
+  row-gap: 20px;
+  column-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 10px;
+  margin-top: 180px; 
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertically center the arrows and content */
+  justify-content: center;
+  height: 300px; /* Set a fixed height for the carousel */
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 80%; /* Vertically center the arrows */
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  left: -100px;
+}
+
+.right-arrow {
+  right: -100px;
+}
+
