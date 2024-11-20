@@ -5,10 +5,6 @@ button {
   margin: 5px;
 }
 
-button:hover {
-  background-color: rgb(253, 127, 127);
-}
-
 .card {
   padding: 20px;
   /*width: 100%;*/

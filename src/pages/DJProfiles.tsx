@@ -46,21 +46,34 @@ const About: React.FC = () => {
     target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() === tag.toLowerCase());
 
   const handleLeftClick = () => {
-    setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - 4));
+    if (currentStartIndex > 0) {
+      setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - 4));
+    }
   };
 
   const handleRightClick = () => {
-    setCurrentStartIndex((prevIndex) =>
-      Math.min(projects.length - 4, prevIndex + 4)
-    );
+    if (currentStartIndex + 4 < projects.length) {
+      setCurrentStartIndex((prevIndex) =>
+        Math.min(projects.length - 4, prevIndex + 4)
+      );
+    }
   };
+
+  const isLeftDisabled = currentStartIndex === 0;
+  const isRightDisabled = currentStartIndex + 4 >= projects.length;
 
   return (
     <div className="tags-container">
       <TagsInput value={tags} onChange={setTags} />
 
       <div className="carousel-container">
-        <button className="carousel-arrow left-arrow" onClick={handleLeftClick}>
+        <button
+          className={`carousel-arrow left-arrow ${
+            isLeftDisabled ? "disabled" : ""
+          }`}
+          onClick={handleLeftClick}
+          disabled={isLeftDisabled}
+        >
           &#9664;
         </button>
 
@@ -88,7 +101,13 @@ const About: React.FC = () => {
             ))}
         </div>
 
-        <button className="carousel-arrow right-arrow" onClick={handleRightClick}>
+        <button
+          className={`carousel-arrow right-arrow ${
+            isRightDisabled ? "disabled" : ""
+          }`}
+          onClick={handleRightClick}
+          disabled={isRightDisabled}
+        >
           &#9654;
         </button>
       </div>
