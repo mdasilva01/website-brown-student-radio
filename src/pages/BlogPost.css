@@ -1,21 +1,66 @@
+body {
+    height: 100vh;
+    overflow-y: hidden;
+}
 hr {
     margin: 1em;
 }
-nav {
-    margin-bottom: 0;
-}
+
 .post-main-row > td {
-    width: 50%;
-    height: calc(100vh - 4rem);
+    height: 100vh;
+}
+.post-sidebar-col {
+    width: 2em;
+    border-right: 1px solid black;
+}
+.post-sidebar-item p {
+    line-height: 100%;
+}
+.post-sidebar-item:first-child {
+    height: 60%;
+}
+.post-sidebar-item:not(:first-child) {
+    height: 10%;
+    border-top: 1px solid black;
+}
+.post-sidebar-item:nth-child(2) {
+    background-color: #FF7083;
 }
 .post-main-col {
+    width: 55%;
     vertical-align: top;
     overflow-y: scroll;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 .post-main-container {
-    height: calc(100vh - 4rem);
+    height: 100vh;
     overflow-y: scroll;
     padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.post-info-table {
+    width: 100%;
+}
+.post-info-table * {
+    font-family: "Univers LT Std 47 Light Condensed" !important;
+    text-transform: uppercase;
+}
+.post-info-table td {
+    width: 33%;
+}
+.post-title {
+    text-align: center;
+}
+.post-date {
+    text-align: right;
+}
+.post-text * {
+    font-family: "ITC Cheltenham Std Book" !important;
+}
+.post-image-col {
+    background-color: #d9d9d9;
+    border-right: 1px solid black;
 }
 .post-image-col img {
     width: 100%;
