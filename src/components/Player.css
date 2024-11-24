@@ -6,8 +6,8 @@
     to {transform:rotate(360deg);}
 }
 .player-logo {
-    width: 200px;
-    height: 200px;
+    width: 380px;
+    height: 380px;
     cursor: pointer;
 }
 .player-logo.spin {
@@ -28,4 +28,14 @@
   .program-info {
     margin-left: 40px; /* Adds some spacing between the Player and Program Information */
   }
+
+  .player-container {
+    padding: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-top: -35px; /* Adjust spacing between the time and player */
+  }
+  
+  
   

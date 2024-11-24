@@ -15,7 +15,12 @@
   background-color: var(--primary-color);
 }
 
+.navbar li.active {
+  background-color: var(--primary-color); /* Highlight active item */
+}
+
 .navbar li {
+  cursor: pointer;
   list-style: none;
   width: 100%; /* Each navbar item spans full width */
   text-align: center;
@@ -55,4 +60,32 @@
 .right-text {
   text-align: right;
   padding-right: 10px; /* Add padding for spacing */
+}
+
+.navbar span {
+  font-size: 0.8rem; /* Smaller font for text inside spans */
+  padding: 0; /* Remove padding for tighter layout */
+  text-align: right;
+}
+
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Adjust this value based on your needs */
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto; /* This pushes the social icons to the right */
+}
+
+.social-icon {
+  color: inherit;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
 }
