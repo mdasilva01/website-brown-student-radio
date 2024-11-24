@@ -28,7 +28,7 @@ export default function Player() {
 
     return (
         <>
-            <img className={`player-logo ${playing ? "spin" : ""}`} src="/player.png" onClick={togglePlaying} />
+            <img className={`player-logo ${playing ? "spin" : ""}`} src="/disc_player.png" onClick={togglePlaying} />
             <p className={`loading-text ${loading ? "" : "hidden"}`}>Loading...</p>
             <div ref={audioContainer}></div>
         </>
