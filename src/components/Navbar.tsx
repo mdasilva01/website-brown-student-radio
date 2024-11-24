@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Import the CSS file for styling
+import { FaSpotify, FaInstagram, FaTwitter } from 'react-icons/fa';
+import './Navbar.css';
 
 const Navbar: React.FC = () => {
-  // State to track the active navbar item
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // Handle click to set the active item
   const handleItemClick = (index: number): void => {
     setActiveIndex(index);
   };
@@ -44,12 +43,38 @@ const Navbar: React.FC = () => {
         </li>
 
         <li
-          className={`home-link ${activeIndex === 3 ? 'active' : ''}`}
+          className={`home-link about-section ${activeIndex === 3 ? 'active' : ''}`}
           onClick={() => handleItemClick(3)}
         >
           <Link to="/about">
             <div className="left-text">ABOUT</div>
           </Link>
+          <div className="social-icons">
+            <a
+              href="https://twitter.com/bsrlive"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaTwitter size={20} />
+            </a>
+            <a
+              href="https://www.instagram.com/bsrlive/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaInstagram size={20} />
+            </a>
+            <a
+              href="https://open.spotify.com/user/ndis7o6g0u1oq2xvgww7itbvt?si=h8RtzXcKRPeMLna5J2CewA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaSpotify size={20} />
+            </a>
+          </div>
         </li>
       </ul>
     </nav>
