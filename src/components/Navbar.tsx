@@ -10,6 +10,50 @@ const Navbar: React.FC = () => {
     setActiveIndex(index);
   };
 
+  // const [currentShow, setCurrentShow] = useState<string>('Loading...');
+  // const [currentDJ, setCurrentDJ] = useState<string>('Loading...');
+
+  // useEffect(() => {
+  //   const fetchCurrentShowData = async () => {
+  //     try {
+  //       const response = await fetch('https://widgets.spinitron.com/widget/now-playing?station=wbru');
+        
+  //       if (!response.ok) {
+  //         setCurrentShow('No Current Show');
+  //         setCurrentDJ('No DJ Available');
+  //         return;
+  //       }
+
+  //       const html = await response.text();
+
+  //       // Check if the HTML contains the "Page not found" error
+  //       if (html.includes('Page not found')) {
+  //         setCurrentShow('No Current Show');
+  //         setCurrentDJ('No DJ Available');
+  //         return;
+  //       }
+
+  //       // Parse HTML and extract relevant information
+  //       const parser = new DOMParser();
+  //       const doc = parser.parseFromString(html, 'text/html');
+
+  //       // Extract show and DJ
+  //       const showElement = doc.querySelector('.recentsong .spunpart .playlist-part .showname a');
+  //       const djElement = doc.querySelector('.recentsong .spunpart .djpart a');
+
+  //       setCurrentShow(showElement ? showElement.textContent || 'No Current Show' : 'No Current Show');
+  //       setCurrentDJ(djElement ? djElement.textContent || 'No DJ Available' : 'No DJ Available');
+        
+  //     } catch (error) {
+  //       console.error('Error fetching Spinitron data:', error);
+  //       setCurrentShow('No Show Available');
+  //       setCurrentDJ('No DJ Available');
+  //     }
+  //   };
+
+  //   fetchCurrentShowData();
+  // }, []);
+
   return (
     <nav>
       <ul className="navbar">
@@ -18,9 +62,13 @@ const Navbar: React.FC = () => {
           onClick={() => handleItemClick(0)}
         >
           <Link to="/Schedule">
-            <div className="left-text">NOW LIVE:</div>
-            <div className="center-text">INSERT SHOW</div>
-            <div className="right-text">INSERT DJ NAME</div>
+            <div className="left-text">WHAT'S PLAYING:</div>
+            <div className="center-text">Violet's Vinyl Vault</div>
+            <div className="right-text">Violet</div>
+
+            {/* <div className="left-text">NOW LIVE:</div>
+            <div className="center-text">{currentShow}</div>
+            <div className="right-text">{currentDJ}</div> */}
           </Link>
         </li>
 
