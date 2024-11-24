@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css'; // Import the CSS file for styling
 
 const Navbar = () => {
+  const {hash, pathname, search} = useLocation();
+  if (pathname.startsWith("/blog/") && pathname.length > 6) return null;
   return (
     <nav>
       <ul className="navbar">
@@ -13,7 +15,7 @@ const Navbar = () => {
             <span className="right-text">DJ NAME(S)</span>
           </Link>
         </li>
-        <li className="home-link"><Link to="/">
+        <li className="home-link"><Link to="/blog">
           <span className="left-text">BLOG POSTS</span>
         </Link></li>
         <li className="home-link"><Link to="/DJProfiles">

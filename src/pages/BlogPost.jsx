@@ -60,7 +60,7 @@ export default function BlogPost() {
     return (
         <table>
             <tbody>
-                <tr class="post-main-row">
+                <tr className="post-main-row">
                     <td className="post-sidebar-col">
                         <div className="post-sidebar-item"></div>
                         <div className="post-sidebar-item"></div>

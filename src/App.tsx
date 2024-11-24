@@ -8,6 +8,7 @@ import SchedulePage from './pages/Schedule';
 import ContactPage from './pages/Contact';
 import DJProfilesPage from './pages/DJProfiles';
 import BlogPost from './pages/BlogPost';
+import BlogPostList from './pages/BlogPostList';
 
 const App: React.FC = () => {
   return (
@@ -20,9 +21,8 @@ const App: React.FC = () => {
           <Route path="/schedule" element={<SchedulePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/DJProfiles" element={<DJProfilesPage />} />
-          <Route path="/blog" element={<Outlet />}>
-            <Route path=":postID" element={<BlogPost />} />
-          </Route>
+          <Route path="/blog" element={<BlogPostList />} />
+          <Route path="/blog/:postID" element={<BlogPost />} />
         </Routes>
         {/* <Footer /> */}
       </div>

@@ -1,6 +1,5 @@
 import Player from '../components/Player';
 import Shows from '../components/Shows';
-import BlogPreview from '../components/BlogPreview';
 import './Home.css';
 
 export default function Home() {
