@@ -1,9 +1,18 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons"; // Import the home icon
 import "./About.css";
 
 const About: React.FC = () => {
   return (
     <div className="container">
+      {/* Home Button */}
+      <div className="home-button">
+        <a href="/" title="Go Home">
+          <FontAwesomeIcon icon={faHome} size="2x" /> {/* Home Icon */}
+        </a>
+      </div>
+
       <div className="content">
         <iframe
           className="video"

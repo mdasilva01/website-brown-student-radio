@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Player from '../components/Player'; // Import the Player component
 import './Schedule.css'; // Import the CSS file for styling
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const Home: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>('');
@@ -42,6 +44,11 @@ const Home: React.FC = () => {
   return (
     <>
       <div>
+      <div className="home-button">
+        <a href="/" title="Go Home">
+          <FontAwesomeIcon icon={faHome} size="2x" />
+        </a>
+      </div>
         <div className="mdl-layout mdl-js-layout">
           <main className="mdl-layout__content">
             <div className="schedule-page">

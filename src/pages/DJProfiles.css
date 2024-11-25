@@ -121,3 +121,20 @@ button {
   right: -100px;
 }
 
+.home-button {
+  position: fixed; /* Stays in the same place even when scrolling */
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Ensures it is above other elements */
+  margin-right: 10px;
+  margin-top: 10px; 
+}
+
+.home-button a {
+  text-decoration: none;
+  color: #000; /* Default color */
+}
+
+.home-button a:hover {
+  color: var(--primary-color); /* Change color on hover */
+}

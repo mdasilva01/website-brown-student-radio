@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import './DJProfiles.css';
-import TagsInput from 'react-tagsinput';
+import React, { useState, useEffect, useCallback } from "react";
+import "./DJProfiles.css";
+import TagsInput from "react-tagsinput";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 type Project = {
   photo: string;
@@ -64,8 +66,13 @@ const About: React.FC = () => {
 
   return (
     <div className="tags-container">
+      <div className="home-button">
+        <a href="/" title="Go Home">
+          <FontAwesomeIcon icon={faHome} size="2x" />
+        </a>
+      </div>
       <TagsInput value={tags} onChange={setTags} />
-
+      
       <div className="carousel-container">
         <button
           className={`carousel-arrow left-arrow ${

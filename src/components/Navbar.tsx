@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
           className={`home-link ${activeIndex === 1 ? 'active' : ''}`}
           onClick={() => handleItemClick(1)}
         >
-          <Link to="/">
+          <Link to="/BlogPost">
             <div className="left-text">BLOG POSTS</div>
           </Link>
         </li>
