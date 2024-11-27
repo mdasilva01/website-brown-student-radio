@@ -63,8 +63,8 @@ const Navbar: React.FC = () => {
         >
           <Link to="/Schedule">
             <div className="left-text">WHAT'S PLAYING:</div>
-            <div className="center-text">Violet's Vinyl Vault</div>
-            <div className="right-text">Violet</div>
+            <div className="center-text">VIOLET'S VINYL VAULT</div>
+            <div className="right-text">VIOLET</div>
 
             {/* <div className="left-text">NOW LIVE:</div>
             <div className="center-text">{currentShow}</div>
