@@ -8,12 +8,14 @@ type Project = {
   photo: string;
   title: string;
   description: string;
+  hover_description: string;
   tags: string[];
 };
 
 const About: React.FC = () => {
   const [tags, setTags] = useState<string[]>(["DJ"]);
   const [projects, setProjects] = useState<Project[]>([]);
+  const [currentStartIndex, setCurrentStartIndex] = useState<number>(0);
 
   useEffect(() => {
     fetch(
@@ -26,6 +28,7 @@ const About: React.FC = () => {
             photo: obj.metadata.photo?.url || '',
             title: obj.title,
             description: obj.metadata.description,
+            hover_description: obj.metadata.hover_description,
             tags: obj.metadata.tags.data || [],
           }));
           setProjects(formattedProjects);
@@ -44,10 +47,24 @@ const About: React.FC = () => {
   );
 
   const matchTags = (current: Project, target: string[]) =>
-    target.every((tag) =>
-      current.tags.some((currentTag) => currentTag.toLowerCase() === tag.toLowerCase()) ||
-      current.title.toLowerCase() === tag.toLowerCase()
-    );
+    target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() === tag.toLowerCase());
+
+  const handleLeftClick = () => {
+    if (currentStartIndex > 0) {
+      setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - 4));
+    }
+  };
+
+  const handleRightClick = () => {
+    if (currentStartIndex + 4 < projects.length) {
+      setCurrentStartIndex((prevIndex) =>
+        Math.min(projects.length - 4, prevIndex + 4)
+      );
+    }
+  };
+
+  const isLeftDisabled = currentStartIndex === 0;
+  const isRightDisabled = currentStartIndex + 4 >= projects.length;
 
   return (
     <div className="tags-container">
@@ -57,33 +74,61 @@ const About: React.FC = () => {
         </a>
       </div>
       <TagsInput value={tags} onChange={setTags} />
-
+      
       <div className="carousel-container">
+        <button
+          className={`carousel-arrow left-arrow ${
+            isLeftDisabled ? "disabled" : ""
+          }`}
+          onClick={handleLeftClick}
+          disabled={isLeftDisabled}
+        >
+          &#9664;
+        </button>
+
         <div className="DJ-container">
-          {projects
-            .filter((proj) => matchTags(proj, tags))
-            .map(({ title, description, photo, tags }, index) => (
-              <div key={`card-${index}`} className="card">
-                <div className="card-title">{title}</div>
-                <div className="image-container">
-                  {photo && <img src={photo} alt={title} />}
-                  <div className="card-description">{description}</div>
-                </div>
-                <div className="card-tags">
-                  {tags.map((tag) => (
-                    <button
-                      className="tag-button"
-                      key={`add-button-${tag}-${index}`}
-                      type="button"
-                      onClick={addTag(tag)}
-                    >
-                      #{tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ))}
+  {projects
+    .filter((proj) => matchTags(proj, tags))
+    .slice(currentStartIndex, currentStartIndex + 4)
+    .map(({ title, description, hover_description, photo, tags }, index) => (
+      <div key={`card-${index}`} className="card">
+        <div className="card-content">
+          {/* Photo */}
+          {photo && <img src={photo} alt={title} />}
+          {/* Title */}
+          <p className="card-title">{title}</p>
+          {/* Description */}
+          <p className="card-description">{description}</p>
+          {/* Hover Description */}
+          <div className="hover-description">{hover_description}</div>
         </div>
+        {/* Tags */}
+        <div className="card-tags">
+          {tags.map((tag) => (
+            <button
+              className="tag-button"
+              key={`add-button-${tag}-${index}`}
+              type="button"
+              onClick={addTag(tag)}
+            >
+              #{tag}
+            </button>
+          ))}
+        </div>
+      </div>
+    ))}
+</div>
+
+
+        <button
+          className={`carousel-arrow right-arrow ${
+            isRightDisabled ? "disabled" : ""
+          }`}
+          onClick={handleRightClick}
+          disabled={isRightDisabled}
+        >
+          &#9654;
+        </button>
       </div>
     </div>
   );
