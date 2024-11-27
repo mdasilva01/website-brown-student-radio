@@ -14,7 +14,6 @@ type Project = {
 const About: React.FC = () => {
   const [tags, setTags] = useState<string[]>(["DJ"]);
   const [projects, setProjects] = useState<Project[]>([]);
-  const [currentStartIndex, setCurrentStartIndex] = useState<number>(0);
 
   useEffect(() => {
     fetch(
@@ -45,24 +44,10 @@ const About: React.FC = () => {
   );
 
   const matchTags = (current: Project, target: string[]) =>
-    target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() === tag.toLowerCase());
-
-  const handleLeftClick = () => {
-    if (currentStartIndex > 0) {
-      setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - 4));
-    }
-  };
-
-  const handleRightClick = () => {
-    if (currentStartIndex + 4 < projects.length) {
-      setCurrentStartIndex((prevIndex) =>
-        Math.min(projects.length - 4, prevIndex + 4)
-      );
-    }
-  };
-
-  const isLeftDisabled = currentStartIndex === 0;
-  const isRightDisabled = currentStartIndex + 4 >= projects.length;
+    target.every((tag) =>
+      current.tags.some((currentTag) => currentTag.toLowerCase() === tag.toLowerCase()) ||
+      current.title.toLowerCase() === tag.toLowerCase()
+    );
 
   return (
     <div className="tags-container">
@@ -72,52 +57,33 @@ const About: React.FC = () => {
         </a>
       </div>
       <TagsInput value={tags} onChange={setTags} />
-      
-      <div className="carousel-container">
-        <button
-          className={`carousel-arrow left-arrow ${
-            isLeftDisabled ? "disabled" : ""
-          }`}
-          onClick={handleLeftClick}
-          disabled={isLeftDisabled}
-        >
-          &#9664;
-        </button>
 
+      <div className="carousel-container">
         <div className="DJ-container">
           {projects
             .filter((proj) => matchTags(proj, tags))
-            .slice(currentStartIndex, currentStartIndex + 4)
             .map(({ title, description, photo, tags }, index) => (
               <div key={`card-${index}`} className="card">
-                <div>
+                <div className="card-title">{title}</div>
+                <div className="image-container">
                   {photo && <img src={photo} alt={title} />}
-                  <p className="card-title">{title}</p>
-                  <p className="card-description">{description}</p>
+                  <div className="card-description">{description}</div>
                 </div>
-                {tags.map((tag) => (
-                  <button 
-                    className="tag-button"
-                    key={`add-button-${tag}-${index}`}
-                    type="button"
-                    onClick={addTag(tag)}
-                  >
-                    #{tag}
-                  </button>
-                ))}
+                <div className="card-tags">
+                  {tags.map((tag) => (
+                    <button
+                      className="tag-button"
+                      key={`add-button-${tag}-${index}`}
+                      type="button"
+                      onClick={addTag(tag)}
+                    >
+                      #{tag}
+                    </button>
+                  ))}
+                </div>
               </div>
             ))}
         </div>
-
-        <button
-          className={`carousel-arrow right-arrow ${
-            isRightDisabled ? "disabled" : ""
-          }`}
-          onClick={handleRightClick}
-          disabled={isRightDisabled}
-        >
-          &#9654;
-        </button>
       </div>
     </div>
   );
