@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSpotify, FaInstagram, FaTwitter } from 'react-icons/fa';
 import './Navbar.css';
+import '../fonts/univers-lt-std-webfont/univers-font.css';
 
 const Navbar: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

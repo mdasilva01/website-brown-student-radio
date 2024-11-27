@@ -9,6 +9,8 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
+  font-family: 'Univers LT Std 53 Extended';
+
 }
 
 .navbar li:hover {
@@ -34,6 +36,7 @@
   display: block;
   padding: 20px;
   width: 100%; /* Full width of the screen */
+  
 }
 
 /* Styles for the Home link with three sections */

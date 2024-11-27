@@ -92,11 +92,12 @@ const About: React.FC = () => {
               <div key={`card-${index}`} className="card">
                 <div>
                   {photo && <img src={photo} alt={title} />}
-                  <p>{title}</p>
-                  <p>{description}</p>
+                  <p className="card-title">{title}</p>
+                  <p className="card-description">{description}</p>
                 </div>
                 {tags.map((tag) => (
-                  <button
+                  <button 
+                    className="tag-button"
                     key={`add-button-${tag}-${index}`}
                     type="button"
                     onClick={addTag(tag)}
