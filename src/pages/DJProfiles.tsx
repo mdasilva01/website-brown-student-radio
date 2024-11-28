@@ -50,15 +50,17 @@ const About: React.FC = () => {
     target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() === tag.toLowerCase());
 
   const handleLeftClick = () => {
+    const cardsPerScroll = window.innerWidth <= 768 ? 1 : 4; // Scroll by 1 for phone, 4 for larger screens
     if (currentStartIndex > 0) {
-      setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - 4));
+      setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - cardsPerScroll));
     }
   };
-
+  
   const handleRightClick = () => {
-    if (currentStartIndex + 4 < projects.length) {
+    const cardsPerScroll = window.innerWidth <= 768 ? 1 : 4; // Scroll by 1 for phone, 4 for larger screens
+    if (currentStartIndex + cardsPerScroll < projects.length) {
       setCurrentStartIndex((prevIndex) =>
-        Math.min(projects.length - 4, prevIndex + 4)
+        Math.min(projects.length - cardsPerScroll, prevIndex + cardsPerScroll)
       );
     }
   };
@@ -93,16 +95,11 @@ const About: React.FC = () => {
     .map(({ title, description, hover_description, photo, tags }, index) => (
       <div key={`card-${index}`} className="card">
         <div className="card-content">
-          {/* Photo */}
           {photo && <img src={photo} alt={title} />}
-          {/* Title */}
           <p className="card-title">{title}</p>
-          {/* Description */}
           <p className="card-description">{description}</p>
-          {/* Hover Description */}
           <div className="hover-description">{hover_description}</div>
         </div>
-        {/* Tags */}
         <div className="card-tags">
           {tags.map((tag) => (
             <button

@@ -100,7 +100,7 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px;
-  margin-top: 250px; 
+  margin-top: 200px; 
 }
 
 .carousel-container {
@@ -189,4 +189,211 @@ button {
 .card:hover .hover-description {
   opacity: 1; /* Fully visible */
   pointer-events: auto; /* Allow interaction */
+}
+
+@media screen and (max-height: 800px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 200px;
+    height: 200px;
+  }
+
+  .DJ-container{
+    margin-top: 120px; 
+  }
+
+  .carousel-arrow{
+    top: 70%;
+  }
+
+  button{
+    padding: 2px;
+  }
+}
+
+@media screen and (max-width: 1400px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 200px;
+    height: 200px;
+  }
+
+  .DJ-container{
+    margin-top: 120px; 
+  }
+
+  .carousel-arrow{
+    top: 70%;
+  }
+
+  button{
+    padding: 2px;
+  }
+}
+
+@media screen and (max-height: 700px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .DJ-container{
+    margin-top: 50px; 
+  }
+
+  .carousel-arrow{
+    top: 50%;
+  }
+
+  button{
+    padding: 0.5px;
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .DJ-container{
+    margin-top: 50px; 
+  }
+
+  .carousel-arrow{
+    top: 50%;
+  }
+
+  button{
+    padding: 0.5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card img { 
+    width: 200px; /* Reduce image size */
+    height: 200px;
+  }
+  .card {
+    height: 95%; 
+  }
+
+  .card-title {
+    font-size: 0.9rem; /* Reduce font size further */
+  }
+
+  .card-description {
+    font-size: 0.7rem; /* Smaller description font */
+  }
+
+  .hover-description {
+    font-size: 0.8rem; /* Smaller hover description text */
+  }
+
+  .DJ-container{
+    /* display: grid; */
+    row-gap: 10000px;
+    column-gap: 20px;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    margin-top: 00px; 
+    height: 200px; 
+  }
+
+  .carousel-container{
+    right: 0px; 
+  }
+
+  .carousel-arrow {
+    font-size: 1.5rem; /* Reduce arrow size */
+  }
+
+  .left-arrow {
+    left: -40px; /* Adjust arrow positioning */
+    top: 70%;
+  }
+
+  .right-arrow {
+    right: -40px;
+    top: 70%;
+  }
+
+  button{
+    padding: 2px;
+  }
+
+  .react-tagsinput {
+    width: 70%; /* Full width for smaller devices */
+    max-width: 100%; /* Prevents overflow */
+    font-size: 0.85rem; /* Adjust font size for better fit */
+    padding: 8px; /* Reduce padding */
+  }
+
+  .tags-container {
+    margin: 10px auto; /* Smaller margin for compact layout */
+    width: 90%; /* Ensure it scales for smaller screens */
+  }
+
 }
