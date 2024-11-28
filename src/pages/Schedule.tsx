@@ -10,16 +10,16 @@ const Home: React.FC = () => {
     // Function to update the current time
     const updateTime = () => {
       const now = new Date();
-      // Format time to HH:MM (24-hour format) without seconds and no space before AM/PM
+      // format the time to HH:MM without seconds and no space before AM/PM
       const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).replace(/ /g, '');
       setCurrentTime(formattedTime);
     };
 
-    // Update the time every minute
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
+    // update the time every minute
+    updateTime(); 
+    const interval = setInterval(updateTime, 60000); 
 
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
+    return () => clearInterval(interval); // cleanup the interval on component unmount
   }, []);
 
   const handleNowLiveClick = () => {
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    // Dynamically load Spinitron widget script
+    // spinitron widget script existing
     const script = document.createElement('script');
     script.src = 'https://widgets.spinitron.com/static/js/widget.js'; // Spinitron widget URL
     script.async = true;
