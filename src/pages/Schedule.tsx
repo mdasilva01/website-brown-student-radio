@@ -59,8 +59,8 @@ const Home: React.FC = () => {
 
               */}
 
-              {/* The header-divider and other content will stay visible once clicked */}
-              <hr className="header-divider" />
+              {/* The header-divider and other content will stay visible once clicked
+              <hr className="header-divider" /> */}
 
               {/* Section displaying time and Kaikai */}
               <div className="under-bar-content">
@@ -73,12 +73,17 @@ const Home: React.FC = () => {
 <div className="player-container">
   <Player /> 
   <div className="spinitron-js-widget-container widget"> 
-  <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
+  {/* <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe> */}
+  ISNT SHE LOVELY <br /> 
+  STEVIE WONDER<br />
+  Songs in The Key of Life, 1976
   </div>
 
   <div className="spinitron-js-widget-container other-widget">
-  <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
-
+  {/* <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe> */}
+  THE MIX <br /> 
+  MATT DESILVA<br />
+  8-9pm            
                 </div> 
 </div>
               </div>

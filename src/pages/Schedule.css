@@ -63,13 +63,13 @@
   .widget {
     position: absolute; /* or relative/fixed as needed */
     left: 480px; /* Adjust to move it right */
-    top: 250px;
+    top: 300px; /* 250 for widget */ 
   }
 
   .other-widget {
     position: absolute; /* or relative/fixed as needed */
     left: 1050px; /* Adjust to move it right */
-    top: 250px;
+    top: 300px; 
   }
 
   .widget-box {
