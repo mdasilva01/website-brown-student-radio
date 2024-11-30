@@ -1,51 +1,11 @@
-.preview-row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    height: calc(100vh - 252px);
-}
 .preview-post {
-    flex: 1 1 21%;
-    margin-bottom: 1em;
-}
-.preview-inner {
-    width: 20vw;
-    margin: auto;
     cursor: pointer;
 }
 .preview-content {
     display: -webkit-box;
-    line-clamp: 3;
-    -webkit-line-clamp: 3;
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;  
     overflow: hidden;
+    margin-bottom: 1em;
 }
-.preview-image-container {
-    width: 75%;
-    aspect-ratio: 1;
-    overflow: hidden;
-    margin: auto;
-}
-.preview-image-container img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/*.preview-post {
-    border: 1px solid gray;
-    border-radius: 10px;
-    margin: auto;
-    max-width: 800px;
-    text-align: left;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.preview-inner {
-    margin: 10px;
-}
-*/
