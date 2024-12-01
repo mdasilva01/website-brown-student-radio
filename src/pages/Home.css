@@ -78,12 +78,14 @@
 }
 
 .title {
-    font-size: 150px;
+  font-size: 150px;
     display: flex;
-
-    justify-content: center;
-    height: 75vh;
-    margin: 0;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 75vh;           /* Full viewport height */
+    text-align: center;      /* Center text within the container */
+    font-family: 'Univers LT Std 45 Light';
+    letter-spacing: 5px; 
 }
 
 .home-container {
@@ -97,7 +99,9 @@
     max-width: 60px;
     max-height:60px;
     height: auto;
-    margin: 0;
+    position: absolute; 
+    left: 150px; 
+    top: 10px; 
     margin-top:70px;
     cursor: pointer;
     
