@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaSpotify, FaInstagram, FaTwitter } from 'react-icons/fa';
 import './Navbar.css';
 import '../fonts/univers-lt-std-webfont/univers-font.css';
@@ -55,6 +55,9 @@ const Navbar: React.FC = () => {
   //   fetchCurrentShowData();
   // }, []);
 
+  const location = useLocation();
+  if (location.pathname.startsWith("/blog") && location.pathname.length >= 7) return null;  
+
   return (
     <nav>
       <ul className="navbar">
@@ -77,7 +80,7 @@ const Navbar: React.FC = () => {
           className={`home-link ${activeIndex === 1 ? 'active' : ''}`}
           onClick={() => handleItemClick(1)}
         >
-          <Link to="/BlogPost">
+          <Link to="/blog">
             <div className="left-text">BLOG POSTS</div>
           </Link>
         </li>

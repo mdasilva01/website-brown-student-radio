@@ -17,13 +17,13 @@ hr {
     line-height: 100%;
 }
 .post-sidebar-item:first-child {
-    height: 60%;
+    height: calc(100% - (63px * 4));
 }
 .post-sidebar-item:not(:first-child) {
-    height: 10%;
+    height: 63px;
     border-top: 1px solid black;
 }
-.post-sidebar-item:nth-child(2) {
+.post-sidebar-item:nth-child(3) {
     background-color: #FF7083;
 }
 .post-main-col {
@@ -88,9 +88,6 @@ hr {
 .comment td:last-child {
     width: 2em;
 }
-.comment-delete {
-    width: 2em;
-}
 .comment-name-input {
     width: 50%;
     font-size: 100%;
@@ -101,10 +98,16 @@ textarea {
     margin-top: 1em;
     margin-bottom: 0.5em;
 }
-.comment-post-button {
+.comment-button {
     border-radius: 0;
     font-size: 100%;
     margin: 0;
+    padding: 0.25em;
+    background-color: #FF7083;
+    cursor: pointer;
+}
+.comment-button:hover {
+    background-color: #DF5063;
 }
 .loader {
     border: 0.5em solid #f3f3f3; /* Light grey */
