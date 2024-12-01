@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Player from '../components/Player'; // Import the Player component
 import './Schedule.css'; // Import the CSS file for styling
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const Home: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>('');
@@ -10,16 +12,16 @@ const Home: React.FC = () => {
     // Function to update the current time
     const updateTime = () => {
       const now = new Date();
-      // Format time to HH:MM (24-hour format) without seconds and no space before AM/PM
+      // format the time to HH:MM without seconds and no space before AM/PM
       const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).replace(/ /g, '');
       setCurrentTime(formattedTime);
     };
 
-    // Update the time every minute
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
+    // update the time every minute
+    updateTime(); 
+    const interval = setInterval(updateTime, 60000); 
 
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
+    return () => clearInterval(interval); // cleanup the interval on component unmount
   }, []);
 
   const handleNowLiveClick = () => {
@@ -27,7 +29,7 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    // Dynamically load Spinitron widget script
+    // spinitron widget script existing
     const script = document.createElement('script');
     script.src = 'https://widgets.spinitron.com/static/js/widget.js'; // Spinitron widget URL
     script.async = true;
@@ -42,6 +44,11 @@ const Home: React.FC = () => {
   return (
     <>
       <div>
+      <div className="home-button">
+        <a href="/" title="Go Home">
+          <FontAwesomeIcon icon={faHome} size="2x" />
+        </a>
+      </div>
         <div className="mdl-layout mdl-js-layout">
           <main className="mdl-layout__content">
             <div className="schedule-page">
@@ -59,8 +66,8 @@ const Home: React.FC = () => {
 
               */}
 
-              {/* The header-divider and other content will stay visible once clicked */}
-              <hr className="header-divider" />
+              {/* The header-divider and other content will stay visible once clicked
+              <hr className="header-divider" /> */}
 
               {/* Section displaying time and Kaikai */}
               <div className="under-bar-content">
@@ -73,12 +80,17 @@ const Home: React.FC = () => {
 <div className="player-container">
   <Player /> 
   <div className="spinitron-js-widget-container widget"> 
-  <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=wbru&count=1&image=0&sharing=0&cover=0&player=0&merch=0" allow="encrypted-media"></iframe>
+  {/* <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe> */}
+  ISNT SHE LOVELY <br /> 
+  STEVIE WONDER<br />
+  Songs in The Key of Life, 1976
   </div>
 
-  <div className="spinitron-js-widget-container other-widget"> 
-  <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
-
+  <div className="spinitron-js-widget-container other-widget">
+  {/* <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe> */}
+  THE MIX <br /> 
+  MATT DESILVA<br />
+  8-9pm            
                 </div> 
 </div>
               </div>

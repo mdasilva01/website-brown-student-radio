@@ -41,14 +41,14 @@
   .under-bar-time,
   .under-bar-cp{
     font-size: 1em;
-    color: #555;
+    color: #000;
     margin-right: 290px; /* Space between items */
   }
 
   .under-bar-cp, 
   .under-bar-un{
     font-size: 1em;
-    color: #555;
+    color: #000;
     margin-right: 350px; /* Space between items */
   }
   
@@ -63,13 +63,13 @@
   .widget {
     position: absolute; /* or relative/fixed as needed */
     left: 480px; /* Adjust to move it right */
-    top: 250px;
+    top: 300px; /* 250 for widget */ 
   }
 
   .other-widget {
     position: absolute; /* or relative/fixed as needed */
     left: 1050px; /* Adjust to move it right */
-    top: 250px;
+    top: 300px; 
   }
 
   .widget-box {
@@ -107,8 +107,12 @@
 
   .mdl-card__actions {
     display: flex; /* Enable flexbox */
-    justify-content: flex-end; /* Align the content (button) to the right */
+    flex-direction: column;
+    position: relative;
+    justify-content: flex-end; /* Align the content (button) to the bottom */
+    align-items: flex-end;
     padding: 0; /* Optional: Removes any extra padding if needed */
+
   }
   
   .mdl-card__actions .mdl-button {
@@ -122,6 +126,9 @@
     transition: background-color 0.3s, color 0.3s; /* Adds a smooth hover transition */
     margin-bottom: 50px;
     margin-right: 15px; 
+    margin-right: 20px; /* Add spacing from the right edge */
+    margin-top: -20px; 
+    max-width: 180px;
   }
   
   .mdl-card__actions .mdl-button:hover {
@@ -129,13 +136,26 @@
     color: white; /* White text color on hover */
   }
   
+  .home-button {
+    position: fixed; /* Stays in the same place even when scrolling */
+    top: 10px;
+    right: 10px;
+    z-index: 1000; /* Ensures it is above other elements */
+    margin-right: 10px;
+    margin-top: 10px; 
+  }
   
+  .home-button a {
+    text-decoration: none;
+    color: #000; /* Default color */
+  }
   
-  
-  
+  .home-button a:hover {
+    color: var(--primary-color); /* Change color on hover */
+  }
 
-
-
-
+  .mdl-layout {
+    background-color: #FF7083;
+  }
 
   

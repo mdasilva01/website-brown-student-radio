@@ -6,12 +6,20 @@ button {
 }
 
 .card {
+  position: relative;
   padding: 20px;
   /*width: 100%;*/
   height: 100%;
   background-color: rgb(234, 234, 234);
   margin: 10px 0;
-  
+}
+
+.card img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
 .react-tagsinput {
@@ -20,6 +28,7 @@ button {
   overflow: hidden;
   padding-left: 5px;
   padding-top: 5px;
+  font-family: 'ITC Cheltenham Std Light';
 }
 
 .react-tagsinput--focused {
@@ -91,7 +100,7 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px;
-  margin-top: 180px; 
+  margin-top: 200px; 
 }
 
 .carousel-container {
@@ -104,7 +113,7 @@ button {
 
 .carousel-arrow {
   position: absolute;
-  top: 80%; /* Vertically center the arrows */
+  top: 90%; /* Vertically center the arrows */
   transform: translateY(-50%); /* Adjust for perfect centering */
   font-size: 2rem;
   background: none;
@@ -121,3 +130,270 @@ button {
   right: -100px;
 }
 
+.home-button {
+  position: fixed; /* Stays in the same place even when scrolling */
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Ensures it is above other elements */
+  margin-right: 10px;
+  margin-top: 10px; 
+}
+
+.home-button a {
+  text-decoration: none;
+  color: #000; /* Default color */
+}
+
+.home-button a:hover {
+  color: var(--primary-color); /* Change color on hover */
+}
+
+.card-description {
+  font-family: 'ITC Cheltenham Std Light';
+}
+
+.card-title{
+  font-family: Arial;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding-bottom: 3px;
+  padding-top: 5px;
+}
+
+.tag-button{
+  font-family: 'ITC Cheltenham Std Light';
+}
+.card:hover {
+  transform: scale(1.02); /* Slightly enlarge card on hover */
+}
+
+.hover-description {
+  position: absolute; /* Overlay effect */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(36, 36, 36, 0.8); /* Semi-transparent black background */
+  color: #ece7e7; /* White text for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+  opacity: 0; /* Hidden by default */
+  pointer-events: none; /* Disable interaction when hidden */
+  transition: opacity 0.3s ease; /* Smooth fade-in effect */
+}
+
+.card:hover .hover-description {
+  opacity: 1; /* Fully visible */
+  pointer-events: auto; /* Allow interaction */
+}
+
+@media screen and (max-height: 800px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 200px;
+    height: 200px;
+  }
+
+  .DJ-container{
+    margin-top: 120px; 
+  }
+
+  .carousel-arrow{
+    top: 70%;
+  }
+
+  button{
+    padding: 2px;
+  }
+}
+
+@media screen and (max-width: 1400px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 200px;
+    height: 200px;
+  }
+
+  .DJ-container{
+    margin-top: 120px; 
+  }
+
+  .carousel-arrow{
+    top: 70%;
+  }
+
+  button{
+    padding: 2px;
+  }
+}
+
+@media screen and (max-height: 700px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .DJ-container{
+    margin-top: 50px; 
+  }
+
+  .carousel-arrow{
+    top: 50%;
+  }
+
+  button{
+    padding: 0.5px;
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .card {
+    height: 90%; /* Adjust card height for smaller screens */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .card-description {
+    font-size: 0.8rem; /* Reduce description font size */
+  }
+
+  .hover-description {
+    font-size: 0.9rem; /* Smaller hover description */
+  }
+
+  .card img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .DJ-container{
+    margin-top: 50px; 
+  }
+
+  .carousel-arrow{
+    top: 50%;
+  }
+
+  button{
+    padding: 0.5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card img { 
+    width: 200px; /* Reduce image size */
+    height: 200px;
+  }
+  .card {
+    height: 95%; 
+  }
+
+  .card-title {
+    font-size: 0.9rem; /* Reduce font size further */
+  }
+
+  .card-description {
+    font-size: 0.7rem; /* Smaller description font */
+  }
+
+  .hover-description {
+    font-size: 0.8rem; /* Smaller hover description text */
+  }
+
+  .DJ-container{
+    /* display: grid; */
+    row-gap: 10000px;
+    column-gap: 20px;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    margin-top: 00px; 
+    height: 200px; 
+  }
+
+  .carousel-container{
+    right: 0px; 
+  }
+
+  .carousel-arrow {
+    font-size: 1.5rem; /* Reduce arrow size */
+  }
+
+  .left-arrow {
+    left: -40px; /* Adjust arrow positioning */
+    top: 70%;
+  }
+
+  .right-arrow {
+    right: -40px;
+    top: 70%;
+  }
+
+  button{
+    padding: 2px;
+  }
+
+  .react-tagsinput {
+    width: 70%; /* Full width for smaller devices */
+    max-width: 100%; /* Prevents overflow */
+    font-size: 0.85rem; /* Adjust font size for better fit */
+    padding: 8px; /* Reduce padding */
+  }
+
+  .tags-container {
+    margin: 10px auto; /* Smaller margin for compact layout */
+    width: 90%; /* Ensure it scales for smaller screens */
+  }
+
+}

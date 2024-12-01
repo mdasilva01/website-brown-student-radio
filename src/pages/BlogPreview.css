@@ -1,0 +1,11 @@
+.preview-post {
+    cursor: pointer;
+}
+.preview-content {
+    display: -webkit-box;
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    margin-bottom: 1em;
+}

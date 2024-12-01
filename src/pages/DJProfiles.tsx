@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import './DJProfiles.css';
-import TagsInput from 'react-tagsinput';
+import React, { useState, useEffect, useCallback } from "react";
+import "./DJProfiles.css";
+import TagsInput from "react-tagsinput";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 type Project = {
   photo: string;
   title: string;
   description: string;
+  hover_description: string;
   tags: string[];
 };
 
@@ -25,6 +28,7 @@ const About: React.FC = () => {
             photo: obj.metadata.photo?.url || '',
             title: obj.title,
             description: obj.metadata.description,
+            hover_description: obj.metadata.hover_description,
             tags: obj.metadata.tags.data || [],
           }));
           setProjects(formattedProjects);
@@ -46,15 +50,17 @@ const About: React.FC = () => {
     target.every((tag) => current.tags.includes(tag) || current.title.toLowerCase() === tag.toLowerCase());
 
   const handleLeftClick = () => {
+    const cardsPerScroll = window.innerWidth <= 768 ? 1 : 4; // Scroll by 1 for phone, 4 for larger screens
     if (currentStartIndex > 0) {
-      setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - 4));
+      setCurrentStartIndex((prevIndex) => Math.max(0, prevIndex - cardsPerScroll));
     }
   };
-
+  
   const handleRightClick = () => {
-    if (currentStartIndex + 4 < projects.length) {
+    const cardsPerScroll = window.innerWidth <= 768 ? 1 : 4; // Scroll by 1 for phone, 4 for larger screens
+    if (currentStartIndex + cardsPerScroll < projects.length) {
       setCurrentStartIndex((prevIndex) =>
-        Math.min(projects.length - 4, prevIndex + 4)
+        Math.min(projects.length - cardsPerScroll, prevIndex + cardsPerScroll)
       );
     }
   };
@@ -64,8 +70,13 @@ const About: React.FC = () => {
 
   return (
     <div className="tags-container">
+      <div className="home-button">
+        <a href="/" title="Go Home">
+          <FontAwesomeIcon icon={faHome} size="2x" />
+        </a>
+      </div>
       <TagsInput value={tags} onChange={setTags} />
-
+      
       <div className="carousel-container">
         <button
           className={`carousel-arrow left-arrow ${
@@ -78,28 +89,33 @@ const About: React.FC = () => {
         </button>
 
         <div className="DJ-container">
-          {projects
-            .filter((proj) => matchTags(proj, tags))
-            .slice(currentStartIndex, currentStartIndex + 4)
-            .map(({ title, description, photo, tags }, index) => (
-              <div key={`card-${index}`} className="card">
-                <div>
-                  {photo && <img src={photo} alt={title} />}
-                  <p>{title}</p>
-                  <p>{description}</p>
-                </div>
-                {tags.map((tag) => (
-                  <button
-                    key={`add-button-${tag}-${index}`}
-                    type="button"
-                    onClick={addTag(tag)}
-                  >
-                    #{tag}
-                  </button>
-                ))}
-              </div>
-            ))}
+  {projects
+    .filter((proj) => matchTags(proj, tags))
+    .slice(currentStartIndex, currentStartIndex + 4)
+    .map(({ title, description, hover_description, photo, tags }, index) => (
+      <div key={`card-${index}`} className="card">
+        <div className="card-content">
+          {photo && <img src={photo} alt={title} />}
+          <p className="card-title">{title}</p>
+          <p className="card-description">{description}</p>
+          <div className="hover-description">{hover_description}</div>
         </div>
+        <div className="card-tags">
+          {tags.map((tag) => (
+            <button
+              className="tag-button"
+              key={`add-button-${tag}-${index}`}
+              type="button"
+              onClick={addTag(tag)}
+            >
+              #{tag}
+            </button>
+          ))}
+        </div>
+      </div>
+    ))}
+</div>
+
 
         <button
           className={`carousel-arrow right-arrow ${

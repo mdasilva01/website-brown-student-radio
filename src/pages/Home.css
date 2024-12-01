@@ -108,4 +108,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 50px;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 75vh;           /* Full viewport height */
+    text-align: center;      /* Center text within the container */
+    font-family: 'Univers LT Std 45 Light';
+    letter-spacing: 5px; 
 }

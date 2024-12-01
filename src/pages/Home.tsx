@@ -1,5 +1,9 @@
+import Player from '../components/Player';
+import Shows from '../components/Shows';
 import './Home.css';
 import { useRef, useState } from "react";
+import '../fonts/univers-lt-std-webfont/univers-font.css';
+
 
 export default function Home() {
     const audioContainer = useRef<HTMLDivElement>(null); ;

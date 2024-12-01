@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./BlogPost.css";
+import "../fonts/univers-lt-std-webfont/univers-font.css";
+import "../fonts/itc-cheltenham-std-webfont/cheltenham-font.css";
 import { deleteObject, postObject, queryObjects } from "../cosmic";
 
 export default function BlogPost() {
-    const {postID} = useParams();
+    const { postID } = useParams();
 
-    const [adminMode, setAdminMode] = useState(true);
+    const location = useLocation();
+    const adminMode = location.search == "?admin";
 
     const [post, setPost] = useState(null);
     const [comments, setComments] = useState([]);
-    
+
     const [showLoader, setShowLoader] = useState(false);
 
     useEffect(() => {
         (async () => {
-            setPost((await queryObjects({type: "posts", id: postID}))[0]);
-            setComments(await queryObjects({type: "comments", "metadata.post-id": postID}));
+            setPost((await queryObjects({ type: "posts", id: postID }))[0]);
+            setComments(await queryObjects({ type: "comments", "metadata.post-id": postID }));
         })();
     }, [postID]);
 
@@ -48,7 +51,9 @@ export default function BlogPost() {
     }
 
     async function deleteComment(id) {
+        setShowLoader(true);
         await deleteObject(id);
+        setShowLoader(false);
 
         setComments(comments.filter(comment => comment.id != id));
     }
@@ -56,20 +61,36 @@ export default function BlogPost() {
     if (!post) return null;
 
     return (
-        <table>
+        <table cellSpacing={0}>
             <tbody>
-                <tr class="post-main-row">
+                <tr className="post-main-row">
+                    <td className="post-sidebar-col">
+                        <div className="post-sidebar-item"></div>
+                        <div className="post-sidebar-item"></div>
+                        <div className="post-sidebar-item"></div>
+                        <div className="post-sidebar-item"></div>
+                        <div className="post-sidebar-item"></div>
+                    </td>
                     <td className="post-image-col">
                         <img src={post.metadata["main-image"].url} />
                     </td>
                     <td className="post-main-col">
                         <div className="post-main-container">
-                            <div className="center">
-                                <h2>{post.title}</h2>
-                                <p>By {post.metadata.author} - {post.metadata.date}</p>
-                            </div>
-                            <hr />
-                            <p dangerouslySetInnerHTML={{__html: post.metadata.content}}></p>
+                            <table className="post-info-table">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td className="post-title">
+                                            <h2>{post.title}</h2>
+                                        </td>
+                                        <td className="post-date">
+                                            {post.metadata.date}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                            <p className="post-text" dangerouslySetInnerHTML={{ __html: post.metadata.content }}></p>
                             <hr />
                             <h3>{comments.length} comment{comments.length == 1 ? "" : "s"}</h3>
                             <table className="comment-table">
@@ -86,7 +107,7 @@ export default function BlogPost() {
                                             </td>
                                             {adminMode ? (
                                                 <td>
-                                                    <button className="comment-delete" onClick={() => deleteComment(comment.id)}>&times;</button>
+                                                    <button className="comment-button" onClick={() => deleteComment(comment.id)}>&times;</button>
                                                 </td>
                                             ) : null}
                                         </tr>
@@ -104,7 +125,7 @@ export default function BlogPost() {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <button className="comment-post-button" onClick={postComment}>Post</button>
+                                            <button className="comment-button" onClick={postComment}>Post</button>
                                         </td>
                                         <td>
                                             {showLoader ? (<div className="loader"></div>) : null}

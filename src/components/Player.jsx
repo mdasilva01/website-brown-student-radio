@@ -28,8 +28,8 @@ export default function Player() {
 
     return (
         <>
-            <img className={`player-logo ${playing ? "spin" : ""}`} src="/player.png" onClick={togglePlaying} />
-            <p className={`loading-text ${loading ? "" : "hidden"}`}>Loading...</p>
+            <img className={`player-logo ${loading ? "spin" : ""}`} src="/disc_player.png" onClick={togglePlaying} /> {/* spins onclick */}
+            <p className={`loading-text ${loading ? "" : "hidden"}`}>Loading...</p> {/* loads only if Clicked */}
             <div ref={audioContainer}></div>
         </>
     )
