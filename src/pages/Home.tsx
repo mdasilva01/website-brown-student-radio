@@ -1,23 +1,49 @@
 import Player from '../components/Player';
 import Shows from '../components/Shows';
 import './Home.css';
+import { useRef, useState } from "react";
 import '../fonts/univers-lt-std-webfont/univers-font.css';
 
 
 export default function Home() {
+    const audioContainer = useRef<HTMLDivElement>(null); ;
+    const [playing, setPlaying] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    function togglePlaying() {
+        const containerEl = audioContainer.current;
+        if (!containerEl) {
+            console.error("audioContainer is not attached to a DOM element.");
+            return;
+        }
+        if (playing) {
+            if (containerEl.firstChild) {
+                containerEl.removeChild(containerEl.firstChild);
+            }
+            setPlaying(false);
+            setLoading(false);
+            console.log("not playing");
+        } else {
+            const audio = document.createElement("audio");
+            audio.src = "https://listen.bsrlive.com/bsrmp3";
+            // audio.controls = "controls";
+            audio.autoplay = true;
+            audio.addEventListener("play", () => {
+                setLoading(false);
+            });
+            containerEl.appendChild(audio);
+            setPlaying(true);
+            setLoading(true);
+            console.log("playing");
+        }
+    }
     return (
-        <div id="home">
-            <h1 className="title">BSR101.1</h1>
-            {/* <h3>
-                Click to listen to <span className="accent">101.1 FM LP-Providence</span>
-            </h3>
-            <h1>Brown Student & Community Radio</h1>
-            <Player />
-            <br />
-            <Shows />
-            <br />
-            <h2 className="home-text">Latest posts</h2>
-            <BlogPreview /> */}
+        <div id="home" className="home-container">
+            <div className="text-wrapper">
+                <img className="play-gif" src="/play.gif" onClick={togglePlaying}/>
+                <h1 className="title">BSR101.1</h1>
+                <div ref={audioContainer}></div>
+            </div>
         </div>
     );
 }
