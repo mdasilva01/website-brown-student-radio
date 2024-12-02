@@ -3,10 +3,32 @@ import Player from '../components/Player'; // Import the Player component
 import './Schedule.css'; // Import the CSS file for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import Calendar from '../components/Calendar';
+import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>('');
   const [isLiveClicked, setIsLiveClicked] = useState<boolean>(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const navigate = useNavigate;
+
+
+  const schedule = {
+    Monday: [
+      { show: 'Morning Jazz', dj: 'DJ Smooth', start: 8, end: 10 },
+      { show: 'Rock Hour', dj: 'DJ Thunder', start: 15, end: 17 },
+    ],
+    Tuesday: [
+      { show: 'Pop Hits', dj: 'DJ Spark', start: 10, end: 12 },
+      { show: 'Indie Vibes', dj: 'DJ Chill', start: 20, end: 22 },
+    ],
+    // Add more days/shows here as needed
+  };
+
+  const toggleView = () => {
+    setShowCalendar(!showCalendar);
+  };
+
 
   useEffect(() => {
     // Function to update the current time
@@ -44,67 +66,57 @@ const Home: React.FC = () => {
   return (
     <>
       <div>
-      <div className="home-button">
-        <a href="/" title="Go Home">
-          <FontAwesomeIcon icon={faHome} size="2x" />
-        </a>
-      </div>
+        <div className="home-button">
+          <a href="/" title="Go Home">
+            <FontAwesomeIcon icon={faHome} size="2x" />
+          </a>
+        </div>
         <div className="mdl-layout mdl-js-layout">
           <main className="mdl-layout__content">
             <div className="schedule-page">
-              {/* Only show "NOW LIVE" bar if not clicked */}
-              {/* {!isLiveClicked && (
-                <header className="schedule-header" onClick={handleNowLiveClick}>
-                  <span className="header-left">NOW LIVE</span>
-                  <span className="header-center">THERE'S SOMETHING IN YOUR EAR</span>
-                  <span className="header-right">
-                    <div> XANDI PINK </div>
-                    ALLIE HEFNER
-                  </span>
-                </header>
-              )}
-
-              */}
-
-              {/* The header-divider and other content will stay visible once clicked
-              <hr className="header-divider" /> */}
-
-              {/* Section displaying time and Kaikai */}
+              {/* Time and Up Next Section */}
               <div className="under-bar-content">
                 <div className="under-bar-time">{currentTime}</div>
-                <div className="under-bar-cp">CURRENTLY PLAYING: </div>
-                <div className="under-bar-un">UP NEXT: </div>
+                <div className="under-bar-cp">CURRENTLY PLAYING: Isn't She Lovely</div>
+                <div className="under-bar-un">UP NEXT: The Mix (8-9 PM)</div>
               </div>
-              
-              {/* Add the Player component here under the time */}
-<div className="player-container">
-  <Player /> 
-  <div className="spinitron-js-widget-container widget"> 
-  {/* <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe> */}
-  ISNT SHE LOVELY <br /> 
-  STEVIE WONDER<br />
-  Songs in The Key of Life, 1976
-  </div>
 
-  <div className="spinitron-js-widget-container other-widget">
-  {/* <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe> */}
-  THE MIX <br /> 
-  MATT DESILVA<br />
-  8-9pm            
-                </div> 
-</div>
+              {/* Player Section */}
+              <div className="player-container">
+                <Player />
+                <div className="spinitron-js-widget-container widget">
+                  Isn't She Lovely <br />
+                  Stevie Wonder <br />
+                  Songs in the Key of Life, 1976
+                </div>
+                <div className="spinitron-js-widget-container other-widget">
+                  The Mix <br />
+                  Matt DaSilva <br />
+                  8-9 PM
+                </div>
               </div>
-              
-              {/* Spinitron widget */}
-              
-          </main>
-          
-          <div className="mdl-card__actions">
-              <a href="https://programs.testradio.org/WBRU/calendar?layout=1" className="mdl-button">FULL SCHEDULE</a>
+
+              {/* Button to toggle the calendar view */}
+              <button className="toggle-button" onClick={toggleView}>
+                {showCalendar ? 'Back to Now Playing' : 'View Full Schedule'}
+              </button>
+
+              {/* Sliding Calendar Content */}
+              <div className={`sliding-content ${showCalendar ? 'show' : ''}`}>
+                {showCalendar && (
+                  <div className="schedule">
+                    <button className="back-button" onClick={toggleView}>
+                      &#8592; Back
+                    </button>
+                    <h2>Full Schedule</h2>
+                    <Calendar schedule={schedule} />
+                  </div>
+                )}
+              </div>
             </div>
+          </main>
         </div>
       </div>
-      
     </>
   );
 };

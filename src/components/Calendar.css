@@ -1,0 +1,78 @@
+/* Container for the whole calendar */
+.calendar {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    background-color: #ff5c5c; /* Pink background for the entire calendar */
+}
+
+/* Calendar header (the day names) */
+.calendar-header {
+    display: flex;
+    background-color: #ff5c5c; /* Pink background for the header */
+    color: white;
+}
+
+/* Day header (e.g., Monday, Tuesday, etc.) */
+.day-header {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-right: 1px solid white;
+    background-color: #ff5c5c; /* Pink background for day headers */
+    color: white; /* White text for the day headers */
+}
+
+/* Time column background */
+.time-column {
+    width: 80px;
+    text-align: center;
+    background-color: #ff5c5c; /* Pink background for the time column */
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    color: white; /* White text for time column */
+}
+
+/* Calendar body (the main area with the day cells) */
+.calendar-body {
+    display: flex;
+    flex-direction: column;
+    background-color: #ff5c5c; /* Pink background for the body */
+}
+
+/* Row for each hour */
+.hour-row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Each day cell (where events are placed) */
+.day-cell {
+    flex: 1;
+    min-height: 50px;
+    border-right: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff5c5c; /* Pink background for each day cell */
+    color: white; /* White text in the day cells */
+}
+
+/* Show cell background (e.g., an event or appointment) */
+.show-cell {
+    background-color: #fd59ae; /* Lighter pink for events */
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Details for the show */
+.show-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; /* White text for show details */
+}
