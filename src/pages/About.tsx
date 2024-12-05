@@ -14,7 +14,7 @@ const About: React.FC = () => {
       </div>
 
       <div className="content">
-        <iframe
+        {/* <iframe
           className="video"
           width="60%"
           height="auto"
@@ -23,7 +23,7 @@ const About: React.FC = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
-        ></iframe>
+        ></iframe> */}
         <p className="blurb">
           “The Brown Network” began in 1936 as the first student-run radio
           station in the country. It was a carrier-current AM station

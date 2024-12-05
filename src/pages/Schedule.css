@@ -21,10 +21,15 @@
   margin: 0px 0;
 }
 
+.player-container{
+  margin-top: 5px; 
+}
+
 .under-bar-content {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 45px; 
   padding: 10px 20px;
   height: 70px;
   color: black;
@@ -42,7 +47,7 @@
 .under-bar-cp {
   font-size: 1em;
   color: #000;
-  margin-right: 290px; /* Space between items */
+  margin-right: 300px; /* Space between items */
 }
 
 .under-bar-cp,
@@ -152,10 +157,6 @@
   color: var(--primary-color); /* Change color on hover */
 }
 
-/* Pink background only for certain areas */
-.mdl-layout {
-  background-color: #FF7083; /* Pink background for the main layout */
-}
 
 /* Sliding content (Calendar) styling */
 .sliding-content {
