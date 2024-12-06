@@ -1,1 +1,1 @@
-Site: https://project-brown-student-radio.vercel.app/Schedule
+Site: https://brownstudentradio.vercel.app/
