@@ -44,7 +44,7 @@ hr {
 }
 .post-info-table * {
     font-family: "Univers LT Std 47 Light Condensed" !important;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 .post-info-table td {
     width: 33%;

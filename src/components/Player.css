@@ -17,6 +17,9 @@
     animation-timing-function: linear;
 }
 .loading-text {
+    /* font-size: 30px;  */
+    position: absolute; 
+    left: 485px;  
     color: gray;
 }
 

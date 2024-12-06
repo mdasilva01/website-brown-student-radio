@@ -105,7 +105,18 @@
     top: 30px; 
     margin-top:70px;
     cursor: pointer;
-    
+}
+
+.loading-container {
+    position: relative; /* Establish relative positioning for children */
+    width: 100%; /* Optional: Adjust the width if needed */
+    height: auto; /* Optional: Ensure it wraps its content */
+}
+
+.loading-text {
+    letter-spacing: 0px;
+    position: absolute; /* Absolute positioning within the parent */
+    top: -480px; /* Adjust vertical position */
 }
 
 .text-wrapper {

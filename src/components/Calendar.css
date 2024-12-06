@@ -3,13 +3,13 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
-    background-color: #ff5c5c; /* Pink background for the entire calendar */
+    background-color: white;
 }
 
 /* Calendar header (the day names) */
 .calendar-header {
     display: flex;
-    background-color: #ff5c5c; /* Pink background for the header */
+    background-color: var(--primary-color); /* Pink background for the header */
     color: white;
 }
 
@@ -19,25 +19,25 @@
     text-align: center;
     padding: 10px;
     border-right: 1px solid white;
-    background-color: #ff5c5c; /* Pink background for day headers */
-    color: white; /* White text for the day headers */
+    background-color: var(--primary-color); /* Pink background for day headers */
+    color: black; /* White text for the day headers */
 }
 
 /* Time column background */
 .time-column {
     width: 80px;
     text-align: center;
-    background-color: #ff5c5c; /* Pink background for the time column */
+    background-color: var(--primary-color); /* Pink background for the time column */
     padding: 10px;
     border-right: 1px solid #ccc;
-    color: white; /* White text for time column */
+    color: black; /* White text for time column */
 }
 
 /* Calendar body (the main area with the day cells) */
 .calendar-body {
     display: flex;
     flex-direction: column;
-    background-color: #ff5c5c; /* Pink background for the body */
+    background-color: white; /* Pink background for the body */
 }
 
 /* Row for each hour */
@@ -54,7 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ff5c5c; /* Pink background for each day cell */
+    background-color: white; /* Pink background for each day cell */
     color: white; /* White text in the day cells */
 }
 

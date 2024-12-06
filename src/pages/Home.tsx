@@ -1,12 +1,9 @@
-import Player from '../components/Player';
-import Shows from '../components/Shows';
-import './Home.css';
 import { useRef, useState } from "react";
+import './Home.css';
 import '../fonts/univers-lt-std-webfont/univers-font.css';
 
-
 export default function Home() {
-    const audioContainer = useRef<HTMLDivElement>(null); ;
+    const audioContainer = useRef<HTMLDivElement>(null);
     const [playing, setPlaying] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -26,23 +23,33 @@ export default function Home() {
         } else {
             const audio = document.createElement("audio");
             audio.src = "https://listen.bsrlive.com/bsrmp3";
-            // audio.controls = "controls";
             audio.autoplay = true;
+            setLoading(true);
+
             audio.addEventListener("play", () => {
-                setLoading(false);
+                setLoading(false); // Stop showing the loading text when playback starts
             });
+
             containerEl.appendChild(audio);
             setPlaying(true);
-            setLoading(true);
             console.log("playing");
         }
     }
+
     return (
         <div id="home" className="home-container">
             <div className="text-wrapper">
-                <img className="play-gif" src="/play.gif" onClick={togglePlaying}/>
+                <img 
+                    className={`play-gif ${loading ? "spin" : ""}`} 
+                    src="/play.gif" 
+                    onClick={togglePlaying} 
+                    alt="Play Button" 
+                />
                 <h1 className="title">BSR101.1</h1>
                 <div ref={audioContainer}></div>
+            </div>
+            <div className="loading-container">
+                <p className={`loading-text ${loading ? "" : "hidden"}`}>Loading...</p>
             </div>
         </div>
     );

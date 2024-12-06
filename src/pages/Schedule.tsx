@@ -25,11 +25,19 @@ const Home: React.FC = () => {
     // Add more days/shows here as needed
   };
 
+  // for when we get the sliding calendar working 
+  // const toggleView = () => {
+  //   setShowCalendar(!showCalendar);
+  // };
+
+
   const toggleView = () => {
+    if (!showCalendar) {
+      window.location.href = "https://spinitron.com/WBRU/calendar"; // Replace with the desired URL
+    }
     setShowCalendar(!showCalendar);
   };
-
-
+  
   useEffect(() => {
     // Function to update the current time
     const updateTime = () => {
@@ -77,14 +85,14 @@ const Home: React.FC = () => {
               {/* Time and Up Next Section */}
               <div className="under-bar-content">
                 <div className="under-bar-time">{currentTime}</div>
-                <div className="under-bar-cp">CURRENTLY PLAYING: Isn't She Lovely</div>
-                <div className="under-bar-un">UP NEXT: The Mix (8-9 PM)</div>
+                <div className="under-bar-cp">CURRENTLY PLAYING</div>
+                <div className="under-bar-un">UP NEXT</div>
               </div>
 
               {/* Player Section */}
               <div className="player-container">
                 <Player />
-                <div className="spinitron-js-widget-container widget">
+                {/* <div className="spinitron-js-widget-container widget">
                   Isn't She Lovely <br />
                   Stevie Wonder <br />
                   Songs in the Key of Life, 1976
@@ -93,7 +101,13 @@ const Home: React.FC = () => {
                   The Mix <br />
                   Matt DaSilva <br />
                   8-9 PM
-                </div>
+                </div> */}
+                  <div className="spinitron-js-widget-container widget"> 
+                    <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
+                  </div>
+                  <div className="spinitron-js-widget-container other-widget">
+                    <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
+                  </div> 
               </div>
 
               {/* Button to toggle the calendar view */}
@@ -103,15 +117,15 @@ const Home: React.FC = () => {
 
               {/* Sliding Calendar Content */}
               <div className={`sliding-content ${showCalendar ? 'show' : ''}`}>
-                {showCalendar && (
+                {/* {showCalendar && (
                   <div className="schedule">
                     <button className="back-button" onClick={toggleView}>
                       &#8592; Back
                     </button>
-                    <h2>Full Schedule</h2>
+                    <h2>   .</h2>
                     <Calendar schedule={schedule} />
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </main>

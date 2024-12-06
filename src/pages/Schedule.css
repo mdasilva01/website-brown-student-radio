@@ -29,7 +29,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 45px; 
+  margin-top: 35px; 
   padding: 10px 20px;
   height: 70px;
   color: black;
@@ -47,7 +47,7 @@
 .under-bar-cp {
   font-size: 1em;
   color: #000;
-  margin-right: 300px; /* Space between items */
+  margin-right: 360px; /* Space between items */
 }
 
 .under-bar-cp,
@@ -68,13 +68,14 @@
 .widget {
   position: absolute; /* or relative/fixed as needed */
   left: 480px; /* Adjust to move it right */
-  top: 300px; /* 250 for widget */
+  top: 250px; /* 250 for widget */
 }
 
 .other-widget {
   position: absolute; /* or relative/fixed as needed */
   left: 1050px; /* Adjust to move it right */
-  top: 300px;
+  top: 250px;
+  outline: white; 
 }
 
 .widget-box {
@@ -98,6 +99,10 @@
 .schedule-section h2 {
   font-size: 24px;
   margin-bottom: 10px;
+}
+
+h2{
+  color: white; 
 }
 
 .schedule-section ul {
@@ -189,15 +194,20 @@
 .toggle-button {
   position: absolute; /* Positioned relative to the parent container */
   top: 50%; /* Vertically centered */
-  right: 20px; /* Distance from the right side */  background-color: #ff5c5c;
+  right: 60px; /* Distance from the right side */  background-color: #ff5c5c;
   transform: translateY(-50%); /* Centers it vertically */
-  color: white;
+  color: black;
   padding: 10px;
-  border: none;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 80px;
+  border-radius: 5px; 
+  background-color: var(--primary-color)
 }
 
 .toggle-button:hover {
   background-color: #e04c4c;
+}
+
+.back-button{
+  cursor: pointer;
 }
