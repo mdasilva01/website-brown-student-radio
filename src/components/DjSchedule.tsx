@@ -41,10 +41,9 @@ const DJSchedule: React.FC<{
       const currentTime = currentHour + currentMinute / 60;
 
       let foundCurrentShow: Show | null = null;
-      let smallestTimeDiff = Number.POSITIVE_INFINITY;
 
       shows.forEach((show) => {
-        if (!show.timeSlot || !show.timeSlot.includes(" ")) return;
+        // if (!show.timeSlot || !show.timeSlot.includes(" ")) return;
 
         const [day, timeRange] = show.timeSlot.split(" ");
         if (!timeRange || !timeRange.includes("-")) return;
@@ -53,18 +52,18 @@ const DJSchedule: React.FC<{
         let startTime = parseTime(start);
         const endTime = parseTime(end);
 
+        if (endTime >= 12){
+            startTime = startTime + 12; 
+        }
+        // Check if the current time falls within this show's time range
         if (getDayDifference(currentDay, day) === 0) {
           if (currentTime >= startTime && currentTime < endTime) {
             foundCurrentShow = show;
           }
-
-          const timeDiff = startTime - currentTime;
-          if (timeDiff > 0 && timeDiff < smallestTimeDiff) {
-            smallestTimeDiff = timeDiff;
-          }
         }
       });
 
+      // Pass the current show to the parent component
       onCurrentShowChange(foundCurrentShow);
     }
   }, [shows, onCurrentShowChange]);

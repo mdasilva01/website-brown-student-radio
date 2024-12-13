@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaSpotify, FaInstagram, FaTwitter } from "react-icons/fa";
 import "./Navbar.css";
 import "../fonts/univers-lt-std-webfont/univers-font.css";
-import DJSchedule from "./DjSchedule";
+import DJSchedule from "./DjSchedule"; // Import ShowSchedule component
 
 const Navbar: React.FC = () => {
   const [currentShow, setCurrentShow] = useState<string>("Loading...");
