@@ -48,12 +48,14 @@
 }
 
 .left-text, .center-text, .right-text {
+  text-transform: uppercase;
   flex: 1;
 }
 
 .left-text {
   text-align: left;
-  padding-left: 10px; /* Add padding for spacing */
+  padding-left: 0px; /* Add padding for spacing */
+  
 }
 
 .center-text {
