@@ -92,21 +92,11 @@ const Home: React.FC = () => {
               {/* Player Section */}
               <div className="player-container">
                 <Player />
-                {/* <div className="spinitron-js-widget-container widget">
-                  Isn't She Lovely <br />
-                  Stevie Wonder <br />
-                  Songs in the Key of Life, 1976
-                </div>
-                <div className="spinitron-js-widget-container other-widget">
-                  The Mix <br />
-                  Matt DaSilva <br />
-                  8-9 PM
-                </div> */}
                   <div className="spinitron-js-widget-container widget"> 
-                    <iframe width ="430" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
+                    <iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
                   </div>
                   <div className="spinitron-js-widget-container other-widget">
-                    <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
+                    <iframe src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
                   </div> 
               </div>
 
@@ -133,6 +123,49 @@ const Home: React.FC = () => {
       </div>
     </>
   );
+  // return (
+  //   <div className="schedule-container">
+  //      <div className="home-button">
+  //        <a href="/" title="Go Home">
+  //           <FontAwesomeIcon icon={faHome} size="2x" />
+  //       </a>
+  //     </div>
+  //     <div className="under-bar-content">
+  //       <div className="under-bar-time">{currentTime}</div>
+  //       <div className="under-bar-time">CURRENTLY PLAYING</div>
+  //       <div className="under-bar-un">UP NEXT</div>
+  //     </div>
+
+  //     <div className="player-container">
+  //               {/* <Player /> */}
+  //                 <div> 
+  //                   <iframe width ="430" height="50" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
+  //                 </div>
+  //                 {/* <div>
+  //                   <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
+  //                 </div>  */}
+  //             </div>
+  //     <div className="sliding-content">
+  //       <div className="schedule">
+  //         <section className="schedule-section">
+  //           <h2>Monday</h2>
+  //           <ul>
+  //             <li>Show 1 - 10:00 AM</li>
+  //             <li>Show 2 - 2:00 PM</li>
+  //           </ul>
+  //         </section>
+  //         <section className="schedule-section">
+  //           <h2>Tuesday</h2>
+  //           <ul>
+  //             <li>Show 1 - 9:00 AM</li>
+  //             <li>Show 2 - 3:00 PM</li>
+  //           </ul>
+  //         </section>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+
 };
 
 export default Home;

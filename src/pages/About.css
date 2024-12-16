@@ -46,3 +46,9 @@
 .home-button a:hover {
   color: var(--primary-color); /* Change color on hover */
 }
+
+@media (max-width: 768px) {
+  .blurb{
+    margin-top: 25%; 
+  }
+}

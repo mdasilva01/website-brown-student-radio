@@ -66,13 +66,13 @@
 }
 
 .widget {
-  position: absolute; /* or relative/fixed as needed */
+  position: fixed;
   left: 480px; /* Adjust to move it right */
   top: 250px; /* 250 for widget */
 }
 
 .other-widget {
-  position: absolute; /* or relative/fixed as needed */
+  position: fixed; /* or relative/fixed as needed */
   left: 1050px; /* Adjust to move it right */
   top: 250px;
   outline: white; 
@@ -210,4 +210,97 @@ h2{
 
 .back-button{
   cursor: pointer;
+}
+
+iframe{ 
+  width: 400px; 
+  border-style: none; 
+}
+
+
+/* General fixes for white space issues on mobile */
+
+@media (max-width: 768px) {
+  /* Fix layout of under-bar content */
+  .under-bar-content {
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    margin-top: 5px; /* Reduce margin for less white space */
+    padding: 5px 10px; /* Adjust padding for a tighter layout */
+    height: auto; /* Remove fixed height */
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .under-bar-time{
+    margin-top: 26%;
+    margin-left: 12%;
+  }
+
+  .under-bar-cp{
+    margin-top: 45%; 
+    margin-left: 7%;
+    width: 100%; 
+  }
+
+  .under-bar-un{
+    margin-left: 7%;
+    margin-top: 30%; 
+  }
+
+  /* Optimize player logo */
+  .player-logo {
+    width: 29%; /* Make the logo responsive */
+    height: 29%;
+    margin-top: -118%;
+    margin-left: 60%; 
+  }
+
+  /* Sliding content fixes */
+  .sliding-content {
+    margin-top: 0; /* Remove excess margin */
+    padding: 10px; /* Add consistent padding */
+    height: calc(100vh - 50px); /* Account for navbar height */
+    overflow-y: auto; /* Ensure content is scrollable */
+  }
+
+  /* Toggle button fixes */
+  .toggle-button {
+    top: 20%; /* Adjust position for better visibility */
+    margin-left: 8%;
+    left: 10px; /* Keep within bounds */
+    width: 30%;
+    margin-top: 0;
+  }
+
+  /* General fixes for all content */
+  .mdl-layout__content {
+    margin-top: 0; /* Remove unnecessary spacing above */
+    padding: 10px; /* Add consistent padding */
+    height: auto; /* Allow content to define height */
+    margin-bottom: 0; 
+  }
+
+  /* Reduce excessive padding in other widgets */
+  .widget-box {
+    padding: 0.5em;
+    margin: 5px 0;
+  }
+
+  .widget{
+    top: 29%; 
+    left: 35%; 
+    height: auto; 
+  }
+
+  iframe{
+    width: 85%; 
+    height: 100px; 
+    font-size: 20%; 
+    border-style: none; 
+  }
+
+  .other-widget{
+    top: 48%;
+    left: 48%;
+    height: auto; 
+  }
 }

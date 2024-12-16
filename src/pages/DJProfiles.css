@@ -398,3 +398,9 @@ button {
   }
 
 }
+
+@media (max-width: 768px) {
+  .react-tagsinput{
+    margin-top: 1%; 
+  }
+}

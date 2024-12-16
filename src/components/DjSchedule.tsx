@@ -90,3 +90,18 @@ const DJSchedule: React.FC<{
 };
 
 export default DJSchedule;
+
+//         // Check for the next upcoming show
+//         const timeDiff = startTime - currentTime;
+//         if (timeDiff > 0 && timeDiff < smallestTimeDiff) {
+//           smallestTimeDiff = timeDiff;
+//           foundNextShow = show;
+//         }
+//       });
+  
+//       console.log("Current show:", foundCurrentShow);
+//       console.log("Next show:", foundNextShow);
+  
+//       setCurrentShow(foundCurrentShow);
+//       setNextShow(foundNextShow);
+//     }
