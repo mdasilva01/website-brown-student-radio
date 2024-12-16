@@ -62,7 +62,7 @@
 }
 
 .under-bar-un {
-  margin-left: 40px; /* Moves "UP NEXT" 40px to the left */
+  right: 10%; /* Moves "UP NEXT" 40px to the left */
 }
 
 .widget {
@@ -73,7 +73,7 @@
 
 .other-widget {
   position: fixed; /* or relative/fixed as needed */
-  left: 1050px; /* Adjust to move it right */
+  right: 2%; /* Adjust to move it right */
   top: 250px;
   outline: white; 
 }
@@ -220,7 +220,7 @@ iframe{
 
 /* General fixes for white space issues on mobile */
 
-@media (max-width: 768px) {
+@media (max-width: 395px) {
   /* Fix layout of under-bar content */
   .under-bar-content {
     flex-wrap: wrap; /* Allow wrapping for smaller screens */
@@ -304,3 +304,10 @@ iframe{
     height: auto; 
   }
 }
+
+@media (max-width: 1300px) {
+  iframe{
+    width: 75%; 
+  }
+}
+
