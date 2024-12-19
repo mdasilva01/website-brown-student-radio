@@ -26,7 +26,7 @@ const About: React.FC = () => {
         ></iframe> */}
         <p className="blurb">
           “The Brown Network” began in 1936 as the first student-run radio
-          station in the country. It was a carrier-current AM station
+          station in the country. It was a carrier-current A.M. station
           broadcasting to Brown dorms. Eventually, the station’s name was
           changed to “WBRU-AM.” In 1966, some of the station’s members secured a
           loan from the University and founded the radio station WBRU-FM (95.5),
