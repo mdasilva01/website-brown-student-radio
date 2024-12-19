@@ -18,7 +18,7 @@ const DJSchedule: React.FC<{
     // Fetch the CSV data from the Google Sheets link
     async function fetchData() {
       const response = await fetch(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vTop9nu_-dZStbRarV3QxYa3dqYHf-AdcTIhL4_-CTFkMwJVRcO5eCxfYcxrtJgGvLibMEmGd81dfUm/pub?output=csv"
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ70FHuVv9KwZzefLwLXcQpu4zAPzcxnwgUlvLMRj49HHSLd743FEP-IaPfbj7QXITxWLZEWgSOE82M/pubhtml"
       );
       const text = await response.text();
       const rows = text.split("\n").slice(1); // Skip the header row
