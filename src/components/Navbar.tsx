@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <DJSchedule onCurrentShowChange={handleCurrentShowChange} />
+      <DJSchedule onShowChange={handleCurrentShowChange} />
       <nav>
         <ul className="navbar">
           <li className="home-link">

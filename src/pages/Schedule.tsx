@@ -3,77 +3,77 @@ import Player from '../components/Player'; // Import the Player component
 import './Schedule.css'; // Import the CSS file for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import Calendar from '../components/Calendar';
+import DJSchedule from "../components/DjSchedule"; // Import ShowSchedule component
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>('');
   const [isLiveClicked, setIsLiveClicked] = useState<boolean>(false);
   const [showCalendar, setShowCalendar] = useState(false);
+  const [currentShow, setCurrentShow] = useState<string>("Loading...");
+  const [currentDJ, setCurrentDJ] = useState<string>("Loading...");
+  const [nextShow, setNextShow] = useState<string>("Loading...");
+  const [nextDJ, setNextDJ] = useState<string>("Loading...");
+  const [nextTime, setNextTime] = useState<string>("Loading...");
   const navigate = useNavigate;
 
-
-  const schedule = {
-    Monday: [
-      { show: 'Morning Jazz', dj: 'DJ Smooth', start: 8, end: 10 },
-      { show: 'Rock Hour', dj: 'DJ Thunder', start: 15, end: 17 },
-    ],
-    Tuesday: [
-      { show: 'Pop Hits', dj: 'DJ Spark', start: 10, end: 12 },
-      { show: 'Indie Vibes', dj: 'DJ Chill', start: 20, end: 22 },
-    ],
-    // Add more days/shows here as needed
-  };
-
-  // for when we get the sliding calendar working 
-  // const toggleView = () => {
-  //   setShowCalendar(!showCalendar);
-  // };
-
-
-  const toggleView = () => {
-    if (!showCalendar) {
-      window.location.href = "https://spinitron.com/WBRU/calendar"; // Replace with the desired URL
-    }
-    setShowCalendar(!showCalendar);
-  };
-  
   useEffect(() => {
-    // Function to update the current time
     const updateTime = () => {
       const now = new Date();
-      // format the time to HH:MM without seconds and no space before AM/PM
-      const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).replace(/ /g, '');
+      const formattedTime = now
+        .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
+        .replace(/ /g, '');
       setCurrentTime(formattedTime);
     };
 
-    // update the time every minute
-    updateTime(); 
-    const interval = setInterval(updateTime, 60000); 
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
 
-    return () => clearInterval(interval); // cleanup the interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
-  const handleNowLiveClick = () => {
-    setIsLiveClicked(true); // Hide "NOW LIVE" bar and show the DJ name
+  const handleShowChange = (current: any, next: any, nextShowTime: string | null) => {
+    if (current) {
+      setCurrentShow(current.showTitle || "No Current Show");
+      setCurrentDJ(current.name || "No DJ Available");
+    } else {
+      setCurrentShow("No Current Show");
+      setCurrentDJ("No DJ Available");
+    }
+
+    if (next) {
+      setNextShow(next.showTitle || "No Upcoming Show");
+      setNextDJ(next.name || "No DJ Scheduled");
+      setNextTime(nextShowTime || "No Time Available");
+    } else {
+      setNextShow("No Upcoming Show");
+      setNextDJ("No DJ Scheduled");
+      setNextTime("No Time Available");
+    }
+  };
+
+  const toggleView = () => {
+    if (!showCalendar) {
+      window.location.href = "https://spinitron.com/WBRU/calendar";
+    }
+    setShowCalendar(!showCalendar);
   };
 
   useEffect(() => {
-    // spinitron widget script existing
     const script = document.createElement('script');
-    script.src = 'https://widgets.spinitron.com/static/js/widget.js'; // Spinitron widget URL
+    script.src = 'https://widgets.spinitron.com/static/js/widget.js';
     script.async = true;
     document.body.appendChild(script);
 
-    // Cleanup the script when the component unmounts
     return () => {
       document.body.removeChild(script);
     };
-  }, []); // Empty dependency means this effect runs only once after the component mounts
+  }, []);
 
   return (
     <>
       <div>
+        <DJSchedule onShowChange={handleShowChange} />
         <div className="home-button">
           <a href="/" title="Go Home">
             <FontAwesomeIcon icon={faHome} size="2x" />
@@ -82,90 +82,35 @@ const Home: React.FC = () => {
         <div className="mdl-layout mdl-js-layout">
           <main className="mdl-layout__content">
             <div className="schedule-page">
-              {/* Time and Up Next Section */}
               <div className="under-bar-content">
                 <div className="under-bar-time">{currentTime}</div>
                 <div className="under-bar-cp">CURRENTLY PLAYING</div>
                 <div className="under-bar-un">UP NEXT</div>
               </div>
 
-              {/* Player Section */}
               <div className="player-container">
                 <Player />
-                  <div className="spinitron-js-widget-container widget"> 
-                    <iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
-                  </div>
-                  <div className="spinitron-js-widget-container other-widget">
-                    <iframe src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
-                  </div> 
+                <div className="spinitron-js-widget-container widget">
+                  <iframe
+                    src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0"
+                    allow="encrypted-media"
+                  ></iframe>
+                  <div className="up-next-show">{nextShow}</div>
+                  <div className="up-next-dj">{nextDJ}</div>
+                  <div className="up-next-time">{nextTime}</div>
+                </div>
               </div>
 
-              {/* Button to toggle the calendar view */}
               <button className="toggle-button" onClick={toggleView}>
                 {showCalendar ? 'Back to Now Playing' : 'View Full Schedule'}
               </button>
-
-              {/* Sliding Calendar Content */}
-              <div className={`sliding-content ${showCalendar ? 'show' : ''}`}>
-                {/* {showCalendar && (
-                  <div className="schedule">
-                    <button className="back-button" onClick={toggleView}>
-                      &#8592; Back
-                    </button>
-                    <h2>   .</h2>
-                    <Calendar schedule={schedule} />
-                  </div>
-                )} */}
-              </div>
+              <div className={`sliding-content ${showCalendar ? 'show' : ''}`}></div>
             </div>
           </main>
         </div>
       </div>
     </>
   );
-  // return (
-  //   <div className="schedule-container">
-  //      <div className="home-button">
-  //        <a href="/" title="Go Home">
-  //           <FontAwesomeIcon icon={faHome} size="2x" />
-  //       </a>
-  //     </div>
-  //     <div className="under-bar-content">
-  //       <div className="under-bar-time">{currentTime}</div>
-  //       <div className="under-bar-time">CURRENTLY PLAYING</div>
-  //       <div className="under-bar-un">UP NEXT</div>
-  //     </div>
-
-  //     <div className="player-container">
-  //               {/* <Player /> */}
-  //                 <div> 
-  //                   <iframe width ="430" height="50" src="//widgets.spinitron.com/widget/now-playing-v2?station=WBRU&num=1&sharing=1&cover=0&player=0" allow="encrypted-media"></iframe>
-  //                 </div>
-  //                 {/* <div>
-  //                   <iframe width="400" src="https://widgets.spinitron.com/widget/upcoming-shows?station=wbru&count=1&current=1&sharing=1&description=1"></iframe>
-  //                 </div>  */}
-  //             </div>
-  //     <div className="sliding-content">
-  //       <div className="schedule">
-  //         <section className="schedule-section">
-  //           <h2>Monday</h2>
-  //           <ul>
-  //             <li>Show 1 - 10:00 AM</li>
-  //             <li>Show 2 - 2:00 PM</li>
-  //           </ul>
-  //         </section>
-  //         <section className="schedule-section">
-  //           <h2>Tuesday</h2>
-  //           <ul>
-  //             <li>Show 1 - 9:00 AM</li>
-  //             <li>Show 2 - 3:00 PM</li>
-  //           </ul>
-  //         </section>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
-
 };
 
 export default Home;

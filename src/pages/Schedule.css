@@ -55,6 +55,24 @@
   font-size: 1em;
   color: #000;
   margin-right: 350px; /* Space between items */
+  width: 100%;
+}
+
+.up-next-show, .up-next-dj, .up-next-time {
+  font-size: 1em;
+  color: #000;
+  margin-left: 510px; /* Space between items */
+  width: 100%;
+  text-transform: uppercase; 
+  padding-bottom: 5px; 
+}
+
+.up-next-time{
+  text-transform: none;
+}
+
+.up-next-show{
+  margin-top: -150px; 
 }
 
 .under-bar-cp {
