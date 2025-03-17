@@ -41,7 +41,7 @@ export default function Home() {
             <div className="text-wrapper">
                 <img 
                     className={`play-gif ${loading ? "spin" : ""}`} 
-                    src="/icons8-play.gif" 
+                    src="/public/icons8-play.gif" 
                     onClick={togglePlaying} 
                     alt="Play Button" 
                 />
