@@ -41,9 +41,10 @@ export default function Home() {
             <div className="text-wrapper">
                 <img 
                     className={`play-gif ${loading ? "spin" : ""}`} 
-                    src="/play-button.gif" 
+                    src="/play.gif" 
                     onClick={togglePlaying} 
                     alt="Play Button" 
+                    // style={{ width: '50px', height: '50px', border: '1px solid red', background: 'yellow' }}
                 />
                 <h1 className="title">BSR101.1</h1>
                 <div ref={audioContainer}></div>
