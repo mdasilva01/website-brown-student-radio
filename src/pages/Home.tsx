@@ -39,14 +39,14 @@ export default function Home() {
     return (
         <div id="home" className="home-container">
             <div className="text-wrapper">
+                <h1 className="title">BSR101.1</h1>
                 <img 
                     className={`play-gif ${loading ? "spin" : ""}`} 
-                    src="/play.gif" 
+                    src={require("../assets/play.png")}
                     onClick={togglePlaying} 
                     alt="Play Button" 
                     // style={{ width: '50px', height: '50px', border: '1px solid red', background: 'yellow' }}
                 />
-                <h1 className="title">BSR101.1</h1>
                 <div ref={audioContainer}></div>
             </div>
             <div className="loading-container">
